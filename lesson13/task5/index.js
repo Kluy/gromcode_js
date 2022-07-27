@@ -4,7 +4,7 @@ export function reverseArray(arr) {
   }
 
 
-  
+
 
 export const withdraw = (clients, balances, client, amount) => {
     const clientIndex = clients.indexOf(client);
@@ -39,7 +39,6 @@ export const withdraw = (clients, balances, client, amount) => {
 /* eslint-disable no-restricted-syntax */
 
 export const getAdults = (obj) => {
-    // put your code here
   
     const resultObj = {};
 
