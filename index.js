@@ -1,6 +1,9 @@
 const timer = {
   secondsPassed,
   minsPassed,
+  startTimer(){
+    setInterval
+  }
 }
 
 const defer = (func, ms) => {
