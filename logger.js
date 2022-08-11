@@ -7,11 +7,10 @@ const createLogger = () => {
   const messages = [];
 
   const getRecords = (messageType) => {
+
     return messages
     .sort((a,b) => b.dateTime - a.dateTime)
-    .filter(elem => 
-       elem.type === messageType
-    );
+    .filter(elem => messageType === undefined ? elem : elem.type === messageType);
   }
 
   const warn = (message) => {
@@ -75,16 +74,16 @@ setTimeout(() => {
     console.log(logger1.getRecords('warn'));
 }, 4000);
 
-logger1.getRecords(); // ===> [{ message: 'Unexpected error on the site', type: 'error', dateTime: Date }, { message: 'User logged out', type: 'log', dateTime: Date }, { message: 'User is tring to ented restricted page', type: 'warn', dateTime: Date }, { message: 'User logged in', type: 'log', dateTime: Date }]
-logger1.getRecords('log'); // ===> [{ message: 'User logged out', type: 'log', dateTime: Date }, { message: 'User logged in', type: 'log', dateTime: Date }]
-logger1.getRecords('error'); // ===> [{ message: 'Unexpected error on the site', type: 'error', dateTime: Date }]
-logger1.getRecords('warn'); // ===> [{ message: 'User is tring to ented restricted page', type: 'warn', dateTime: Date }]
+// logger1.getRecords(); // ===> [{ message: 'Unexpected error on the site', type: 'error', dateTime: Date }, { message: 'User logged out', type: 'log', dateTime: Date }, { message: 'User is tring to ented restricted page', type: 'warn', dateTime: Date }, { message: 'User logged in', type: 'log', dateTime: Date }]
+// logger1.getRecords('log'); // ===> [{ message: 'User logged out', type: 'log', dateTime: Date }, { message: 'User logged in', type: 'log', dateTime: Date }]
+// logger1.getRecords('error'); // ===> [{ message: 'Unexpected error on the site', type: 'error', dateTime: Date }]
+// logger1.getRecords('warn'); // ===> [{ message: 'User is tring to ented restricted page', type: 'warn', dateTime: Date }]
 
-const logger2 = createLogger();
-logger2.warn('Opps, something is happenning');
-logger2.getRecords('error'); // ===> []
-logger2.getRecords('warn'); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
-logger2.getRecords(); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
+// const logger2 = createLogger();
+// logger2.warn('Opps, something is happenning');
+// logger2.getRecords('error'); // ===> []
+// logger2.getRecords('warn'); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
+// logger2.getRecords(); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
 
 // console.log(logger2.getRecords('error'));
 // console.log(logger2.getRecords('warn'));
@@ -92,9 +91,9 @@ logger2.getRecords(); // ===> [{ message: 'Opps, something is happenning', type:
 
 
 
-const logger3 = createLogger();
-logger3.getRecords('error'); // ===> []
-logger3.getRecords(); // ===> []
+// const logger3 = createLogger();
+// logger3.getRecords('error'); // ===> []
+// logger3.getRecords(); // ===> []
 
 // console.log(logger3.getRecords('error'));
 // console.log(logger3.getRecords());

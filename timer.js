@@ -13,9 +13,12 @@ const timer = {
     }, 1000);
   },
   getTime() {
-    return this.secondsPassed < 10
-      ? `${this.minsPassed}:0${this.secondsPassed}`
-      : `${this.minsPassed}:${this.secondsPassed}`;
+    console.log(this.minsPassed + ':' + (String)(this.secondsPassed).padStart(2,0));
+    return this.minsPassed + ':' + (String)(this.secondsPassed).padStart(2,0);
+    // return this.secondsPassed < 10
+    //   ? `${this.minsPassed}:0${this.secondsPassed}`
+    //   : `${this.minsPassed}:${this.secondsPassed}`;
+
   },
   stopTimer() {
     clearInterval(this.timerID);
@@ -26,16 +29,10 @@ const timer = {
   },
 };
 
-timer.startTimer();
-
-// console.log(timer.getTime()) 
+// timer.startTimer();
 
 // setInterval(() => {
-//   console.log(timer.getTime()) 
-//  }, 3000);
-
-// setInterval(() => {
-//   console.log(timer.getTime()) 
+//   timer.getTime() 
 //  }, 1000);
 
 // setTimeout(() => {
