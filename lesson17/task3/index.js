@@ -1,18 +1,9 @@
-const timer = {
-  secondsPassed,
-  minsPassed,
-  startTimer(){
-    setInterval
-  }
-}
-
 const defer = (func, ms) => {
+
   return function(){
     setTimeout(() => func.apply(this, arguments), ms);
   }
 }
-
-
 
 const f = () => {
   console.log(12);
