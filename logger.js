@@ -9,7 +9,9 @@ const createLogger = () => {
   const getRecords = (messageType) => {
     return messages
     .sort((a,b) => b.dateTime - a.dateTime)
-    .filter(elem => elem.type === messageType).some(elem => elem === undefined);
+    .filter(elem => 
+       elem.type === messageType
+    );
   }
 
   const warn = (message) => {
@@ -84,9 +86,9 @@ logger2.getRecords('error'); // ===> []
 logger2.getRecords('warn'); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
 logger2.getRecords(); // ===> [{ message: 'Opps, something is happenning', type: 'warn', dateTime: Date }]
 
-console.log(logger2.getRecords('error'));
-console.log(logger2.getRecords('warn'));
-console.log(logger2.getRecords());
+// console.log(logger2.getRecords('error'));
+// console.log(logger2.getRecords('warn'));
+// console.log(logger2.getRecords());
 
 
 
@@ -94,5 +96,5 @@ const logger3 = createLogger();
 logger3.getRecords('error'); // ===> []
 logger3.getRecords(); // ===> []
 
-console.log(logger3.getRecords('error'));
-console.log(logger3.getRecords());
+// console.log(logger3.getRecords('error'));
+// console.log(logger3.getRecords());
