@@ -20,6 +20,11 @@ module.exports = {
     'import/prefer-default-export': 0,
     'prefer-template': 0,
     'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        parser: 'flow',
+      },
       'warn',
       {
         endOfLine: 'auto',
