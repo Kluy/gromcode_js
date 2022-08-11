@@ -28,7 +28,6 @@ const renderTasks = (tasksList) => {
     listItem.append(checkbox, text);
     return listItem;
   });
-  console.log(arrElements);
   list.append(...arrElements);
 };
 
