@@ -14,8 +14,11 @@ const tasks = [
  */
 const renderTasks = (tasksList) => {
   // put your code here
-  const list = document.querySelector('.list');
-  const arrElements = tasksList.map(({ text, done }) => {
+  // const list = document.querySelector('.list');
+    const todoList = document.querySelector('.todo-list');
+    const list = document.createElement('ul');
+    list.classList.add('list');
+    const arrElements = tasksList.map(({ text, done }) => {
     const listItem = document.createElement('li');
     listItem.classList.add('list__item');
     const checkbox = document.createElement('input');
@@ -28,6 +31,7 @@ const renderTasks = (tasksList) => {
     listItem.append(checkbox, text);
     return listItem;
   });
+  todoList.append(list);
   list.append(...arrElements);
 };
 
