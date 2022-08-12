@@ -23,7 +23,7 @@ const timer = {
   stopTimer() {
     clearInterval(this.timerID);
   },
-  resetInterval() {
+  resetTimer() {
     this.secondsPassed = 0;
     this.minsPassed = 0;
   },
