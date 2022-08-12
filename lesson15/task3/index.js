@@ -7,8 +7,9 @@ const createLogger = () => {
   const messages = [];
 
   const getRecords = (messageType) => {
-    const resultArr = messages.sort((a,b) => b.dateTime - a.dateTime)
-    return messageType === undefined ? resultArr : resultArr.filter(elem => elem.type === messageType);
+    return messages
+    .sort((a,b) => b.dateTime - a.dateTime)
+    .filter(elem => elem.type === messageType).some(elem => elem === undefined);
   }
 
   const warn = (message) => {
