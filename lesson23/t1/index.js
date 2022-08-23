@@ -1,20 +1,37 @@
-// так можно получить данные формы - ВАРИАНТ 1:
-// eslint-disable-next-line no-undef
-const formFields = [...new FormData(formElem)];
-// formFields => [["email", "значение поля email"], ["password", "значение поля password"]]
+const formElem = document.querySelector('.login-form');
 
-const formData = formFields.reduce(function (acc, formField) {
-  const prop = formField[0]; // здесь "name" инпута
-  const value = formField[1]; // здесь "value" инпута
-  // если использовать деструктуризацию, то можно предыдущие 2 строки записать короче
-  // const [prop, value] = formField;
-  return {
-    // используем оператор расширения, чтобы в acc добвить свойства все предыдущих итераций
-    ...acc,
-    // используем вычислимое свойство объекта, чтобы добавить в аккумулятор новое свойство
-    [prop]: value,
-  };
-}, {});
+const emailElement = document.querySelector('#email');
+const passwordElement = document.querySelector('#password');
 
-// более простой формат считывания формы - ВАРИАНТ 2:
-// const formData = Object.fromEntries(new FormData(formElem));
+const emailError = document.querySelector('.error-text_email');
+const passwordError = document.querySelector('.error-text_password');
+
+const isRequired = (value) => (value ? undefined : 'Required');
+
+const isEmail = (value) =>
+  value.includes('@') ? undefined : 'Should be an email';
+
+const onEmailChange = (event) => {
+  emailError.textContent = [isRequired, isEmail]
+    .map((elem) => elem(event.target.value))
+    .filter((errorText) => errorText)
+    .join(', ');
+};
+
+const onPasswordChange = (event) => {
+  passwordError.textContent = isRequired(event.target.value);
+};
+
+emailElement.addEventListener('input', onEmailChange);
+passwordElement.addEventListener('input', onPasswordChange);
+
+const onFormSubmit = (event) => {
+  event.preventDefault();
+  const formData = [...new FormData(formElem)].reduce(
+    (acc, [name, value]) => ({ ...acc, [name]: value }),
+    {}
+  );
+  alert(JSON.stringify(formData));
+};
+
+formElem.addEventListener('submit', onFormSubmit);
