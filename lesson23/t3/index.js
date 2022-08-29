@@ -8,8 +8,15 @@ const tasks = [
 
 const listElem = document.querySelector('.list');
 
-const renderTasks = tasksList => {
-  
+const changeList = (event) => {
+  const taskId = event.target.parentElement.dataset.id;
+  const taskElem = document.querySelector(`[data-id='${taskId}']`);
+  tasks.find((elem) => elem.text === taskElem.textContent).done = true;
+  listElem.textContent = '';
+  renderTasks(tasks);
+}
+
+const renderTasks = tasksList => { 
   const tasksElems = tasksList
   .sort((a, b) => a.done - b.done)
   .map(({ text, done }) => {
@@ -19,7 +26,7 @@ const renderTasks = tasksList => {
       checkbox.setAttribute('type', 'checkbox');
       checkbox.checked = done;
       checkbox.classList.add('list__item-checkbox');
-      checkbox.addEventListener('change', change);
+      checkbox.addEventListener('change', changeList);
       if (done) {
         listItemElem.classList.add('list__item_done');
       }
@@ -41,25 +48,20 @@ renderTasks(tasks);
 
 // put your code here
 
-const input = document.querySelector('.task-input');
-const btn = document.querySelector('.create-task-btn');
+const taskInput = document.querySelector('.task-input');
+const createTaskButton = document.querySelector('.create-task-btn');
 
 const getTask = (event) => {
-  event.target.value === '' ? undefined : tasks.push({text:event.target.value, done:false});
+  const taskText = event.target.value;
+  taskText === '' ? undefined : tasks.push({text:taskText, done:false});
   };
 
  const setTask = () => {
     listElem.textContent = '';
+    taskInput.value = '';
     renderTasks(tasks);
   };
 
-input.addEventListener('change', getTask);
-btn.addEventListener('click', setTask);
+taskInput.addEventListener('change', getTask);
+createTaskButton.addEventListener('click', setTask);
 
-function change (event) {
-  const taskId = event.path[1].dataset.id;
-  const taskElem = document.querySelector(`[data-id='${taskId}']`);
-  tasks.find((elem) => elem.text === taskElem.textContent).done = true;
-  listElem.textContent = '';
-  renderTasks(tasks);
-}
