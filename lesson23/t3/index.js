@@ -28,7 +28,7 @@ const renderTasks = tasksList => {
     });
 
     tasksElems.reduce((acc, elem) => {
-      elem.firstChild.setAttribute('data-id', acc + 'dddd');
+      elem.firstChild.setAttribute('data-id', acc);
       acc++;
       return acc;
     }, 0);
@@ -41,10 +41,8 @@ renderTasks(tasks);
 // put your code here
 
 const updateTask = (event) => {
-  const taskElemId = event.target.dataset.id;
-  const taskElem = document.querySelector(`[data-id='${taskElemId}']`);
-  const taskIndex = tasks.findIndex((elem) => elem.text === taskElem.parentElement.textContent);
-  tasks[taskIndex].done ? tasks[taskIndex].done = false : tasks[taskIndex].done = true;
+  const taskId = event.target.dataset.id;
+  tasks[taskId].done === true ? tasks[taskId].done = false : tasks[taskId].done = true;
   listElem.textContent = '';
   renderTasks(tasks);
 }
