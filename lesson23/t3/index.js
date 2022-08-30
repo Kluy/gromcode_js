@@ -8,14 +8,6 @@ const tasks = [
 
 const listElem = document.querySelector('.list');
 
-const updateList = (event) => {
-  const taskId = event.target.parentElement.dataset.id;
-  const taskElem = document.querySelector(`[data-id='${taskId}']`);
-  tasks.find((elem) => elem.text === taskElem.textContent).done = true;
-  listElem.textContent = '';
-  renderTasks(tasks);
-}
-
 const renderTasks = tasksList => { 
   const tasksElems = tasksList
   .sort((a, b) => a.done - b.done)
@@ -26,7 +18,6 @@ const renderTasks = tasksList => {
       checkbox.setAttribute('type', 'checkbox');
       checkbox.checked = done;
       checkbox.classList.add('list__item-checkbox');
-      checkbox.addEventListener('change', updateList);
       if (done) {
         listItemElem.classList.add('list__item_done');
       }
@@ -48,15 +39,25 @@ renderTasks(tasks);
 
 // put your code here
 
+const updateTask = (event) => {
+  const taskId = event.target.parentElement.dataset.id;
+  const taskElem = document.querySelector(`[data-id='${taskId}']`);
+  tasks.find((elem) => elem.text === taskElem.textContent).done = true;
+  listElem.textContent = '';
+  renderTasks(tasks);
+}
+
+listElem.addEventListener('change', updateTask);
+
 const createTaskButton = document.querySelector('.create-task-btn');
 
-const setTask = () => {
+const addNewTask = () => {
    const taskInput = document.querySelector('.task-input');
    const taskText = taskInput.value;
    taskText === '' ? undefined : tasks.push({text:taskText, done:false});
-   listElem.textContent = '';
    taskInput.value = '';
+   listElem.textContent = '';
    renderTasks(tasks);
   };
 
-createTaskButton.addEventListener('click', setTask);
+createTaskButton.addEventListener('click', addNewTask);
