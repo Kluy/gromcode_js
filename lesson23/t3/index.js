@@ -40,14 +40,10 @@ renderTasks(tasks);
 
 // put your code here
 
-const updateList = () => {
-  listElem.textContent = '';
-  renderTasks(tasks);
-}
-
 const updateTask = (event) => {
   tasks[event.target.dataset.id].done = true;
-  updateList();
+  listElem.textContent = '';
+  renderTasks(tasks);
 }
 
 listElem.addEventListener('change', updateTask);
@@ -59,7 +55,8 @@ const addNewTask = () => {
   const taskText = taskInput.value;
   taskText === '' ? undefined : tasks.push({text:taskText, done:false});
   taskInput.value = '';
-  updateList();
-  };
+  listElem.textContent = '';
+  renderTasks(tasks); 
+};
 
 createTaskButton.addEventListener('click', addNewTask);
