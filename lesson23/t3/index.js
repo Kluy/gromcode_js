@@ -12,6 +12,7 @@ const renderTasks = tasksList => {
   const tasksElems = tasksList
   .sort((a, b) => a.done - b.done)
   .map(({ text, done }) => {
+   
     const listItemElem = document.createElement('li');
       listItemElem.classList.add('list__item');
       const checkbox = document.createElement('input');
@@ -27,7 +28,7 @@ const renderTasks = tasksList => {
     });
 
     tasksElems.reduce((acc, elem) => {
-      elem.setAttribute('data-id', acc);
+      elem.firstChild.setAttribute('data-id', acc);
       acc++;
       return acc;
     }, 0);
@@ -39,11 +40,14 @@ renderTasks(tasks);
 
 // put your code here
 
-const updateTask = (event) => {
-  const taskId = event.target.parentElement.dataset.id;
-  tasks[taskId].done = true;
+const updateList = () => {
   listElem.textContent = '';
   renderTasks(tasks);
+}
+
+const updateTask = (event) => {
+  tasks[event.target.dataset.id].done = true;
+  updateList();
 }
 
 listElem.addEventListener('change', updateTask);
@@ -51,12 +55,11 @@ listElem.addEventListener('change', updateTask);
 const createTaskButton = document.querySelector('.create-task-btn');
 
 const addNewTask = () => {
-   const taskInput = document.querySelector('.task-input');
-   const taskText = taskInput.value;
-   taskText === '' ? undefined : tasks.push({text:taskText, done:false});
-   taskInput.value = '';
-   listElem.textContent = '';
-   renderTasks(tasks);
+  const taskInput = document.querySelector('.task-input');
+  const taskText = taskInput.value;
+  taskText === '' ? undefined : tasks.push({text:taskText, done:false});
+  taskInput.value = '';
+  updateList();
   };
 
 createTaskButton.addEventListener('click', addNewTask);
