@@ -41,8 +41,7 @@ renderTasks(tasks);
 
 const updateTask = (event) => {
   const taskId = event.target.parentElement.dataset.id;
-  const taskElem = document.querySelector(`[data-id='${taskId}']`);
-  tasks.find((elem) => elem.text === taskElem.textContent).done = true;
+  tasks[taskId].done = true;
   listElem.textContent = '';
   renderTasks(tasks);
 }
