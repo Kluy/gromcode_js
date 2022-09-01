@@ -40,13 +40,16 @@ renderTasks(tasks);
 // put your code here
 
 const updateTask = (event) => {
+  
+
   let taskId = event.target.dataset.id;
 
   if(taskId === undefined){
     taskId = event.target.firstChild.dataset.id;
   }
 
-  tasks[taskId].done ? tasks[taskId].done = false : tasks[taskId].done = true;
+  tasks[taskId].done = !tasks[taskId].done;
+  
   listElem.textContent = '';
   renderTasks(tasks);
 }
