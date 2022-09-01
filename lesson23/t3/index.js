@@ -12,24 +12,23 @@ const renderTasks = tasksList => {
   const tasksElems = tasksList
   .sort((a, b) => a.done - b.done)
   .map(({ text, done }) => {
-   
     const listItemElem = document.createElement('li');
-      listItemElem.classList.add('list__item');
-      const checkbox = document.createElement('input');
-      checkbox.setAttribute('type', 'checkbox');
-      checkbox.checked = done;
-      checkbox.classList.add('list__item-checkbox');
-      if (done) {
-        listItemElem.classList.add('list__item_done');
-      }
-      listItemElem.append(checkbox, text);
-
-      return listItemElem;
-    });
-
-    tasksElems.reduce((acc, elem) => {
-      elem.firstChild.setAttribute('data-id', acc);
-      acc++;
+    listItemElem.classList.add('list__item');
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.checked = done;
+    checkbox.classList.add('list__item-checkbox');
+    if (done) {
+      listItemElem.classList.add('list__item_done');
+    }
+    listItemElem.append(checkbox, text);
+    
+    return listItemElem;
+  });
+  
+  tasksElems.reduce((acc, elem) => {
+    elem.firstChild.setAttribute('data-id', acc);
+    acc++;
       return acc;
     }, 0);
 
@@ -41,13 +40,18 @@ renderTasks(tasks);
 // put your code here
 
 const updateTask = (event) => {
-  const taskId = event.target.dataset.id;
+  let taskId = event.target.dataset.id;
+
+  if(taskId === undefined){
+    taskId = event.target.firstChild.dataset.id;
+  }
+
   tasks[taskId].done ? tasks[taskId].done = false : tasks[taskId].done = true;
   listElem.textContent = '';
   renderTasks(tasks);
 }
 
-listElem.addEventListener('change', updateTask);
+listElem.addEventListener('click', updateTask);
 
 const createTaskButton = document.querySelector('.create-task-btn');
 
