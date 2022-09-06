@@ -6,7 +6,7 @@ export const studentsBirthDays = (students) => {
     elem.birthDate = new Date(birthDateSplit[2], birthDateSplit[0] - 1, birthDateSplit[1]);
     return elem;
   }).sort((a, b) => {
-    return a.birthDate > b.birthDate;
+    return a.birthDate.getDate() > b.birthDate.getDate();
   }).map(elem => {
     const month = months[elem.birthDate.getMonth()];
     if(sortedBirthDays[month] === undefined){
