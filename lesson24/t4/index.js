@@ -1,8 +1,8 @@
-export const studentsBirthDays = (students) => {
+// export 
+const studentsBirthDays = (students) => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  const [...sortedStudents] = students;
   const sortedBirthDays = {};
-  sortedStudents.map(elem => {
+  const sortedStudents = students.map(elem => {
     const birthDateSplit = elem.birthDate.split('/');
     elem.birthDate = new Date(birthDateSplit[2], birthDateSplit[0] - 1, birthDateSplit[1]);
     return elem;
