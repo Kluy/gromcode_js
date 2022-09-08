@@ -2,6 +2,7 @@
 /**
  * @return {object}
  */
+
 const createLogger = () => {
   // put your code here
   const messages = [];
@@ -9,7 +10,7 @@ const createLogger = () => {
   const getRecords = (messageType) => {
     return messages
     .sort((a,b) => b.dateTime - a.dateTime)
-    .filter(elem => elem.type === messageType).some(elem => elem === undefined);
+    .filter(elem => elem.type === messageType);
   }
 
   const warn = (message) => {
@@ -19,6 +20,7 @@ const createLogger = () => {
         type: 'warn',
     })
   }
+
   const error = (message) => {
     messages.push({
         message: message,
@@ -49,7 +51,6 @@ logger1.log('User logged in');
 // logger1.warn('User is tring to ented restricted page');
 // logger1.log('User logged out');
 // logger1.error('Unexpected error on the site');
-
 
 setTimeout(() => {
     logger1.warn('User is tring to ented restricted page');
@@ -87,8 +88,6 @@ logger2.getRecords(); // ===> [{ message: 'Opps, something is happenning', type:
 console.log(logger2.getRecords('error'));
 console.log(logger2.getRecords('warn'));
 console.log(logger2.getRecords());
-
-
 
 const logger3 = createLogger();
 logger3.getRecords('error'); // ===> []
