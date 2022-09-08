@@ -6,7 +6,7 @@ export const studentsBirthDays = (students) => {
       elem.birthDate = new Date(birthDateParts[2], birthDateParts[0] - 1, birthDateParts[1]);
       return elem;
     }).sort((a, b) => {
-      return a.birthDate < b.birthDate;
+      return a.birthDate > b.birthDate;
     }).map(elem => {
       const month = months[elem.birthDate.getMonth()];
       if(sortedBirthDays[month] === undefined){
@@ -16,3 +16,15 @@ export const studentsBirthDays = (students) => {
     });
     return sortedBirthDays;
   }
+
+  
+  // console.log(studentsBirthDays(
+  //   [
+  //     {name: 'Tom', birthDate:'01/17/2008'},
+  //     {name: 'Tom5', birthDate:'01/17/2009'},
+  //     {name: 'Tom4', birthDate:'01/17/2007'},
+  //     {name: 'Tom1', birthDate:'02/18/2009'},
+  //     {name: 'Tom2', birthDate:'01/29/2000'},
+  //     {name: 'Tom3', birthDate:'04/05/2011'}
+  //   ]
+  // ));
