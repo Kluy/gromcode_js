@@ -7,7 +7,7 @@ export const updateTask = (event) => {
     taskId = event.target.firstChild.dataset.id;
   }
 
-  const tasks = getItem('tasks').map((elem) => {
+  const tasksList = getItem('tasksList').map((elem) => {
     if (String(elem.id) === taskId){
         elem.done = !elem.done;
         elem.date = new Date();
@@ -15,6 +15,6 @@ export const updateTask = (event) => {
     return elem;
  });
 
-  setItem('tasks', tasks)
+  setItem('tasksList', tasksList)
   renderTasks();
 }

@@ -4,9 +4,9 @@ import { renderTasks } from "./render.js";
 export const addNewTask = () => {
   const taskInput = document.querySelector('.task-input');
   const taskText = taskInput.value;
-  const tasks = getItem('tasks') || [];
+  const tasksList = getItem('tasksList') || [];
 
-  taskText === '' ? undefined : tasks.unshift({
+  taskText === '' ? undefined : tasksList.unshift({
     text:taskText,
     done:false,
     id: Math.random(),
@@ -15,7 +15,7 @@ export const addNewTask = () => {
 
   taskInput.value = '';
 
-  setItem('tasks', tasks);
+  setItem('tasksList', tasksList);
 
   renderTasks(); 
 };
