@@ -6,7 +6,7 @@ export const addNewTask = () => {
   const taskText = taskInput.value;
   const tasksList = getItem('tasksList') || [];
 
-  taskText === '' ? undefined : tasksList.unshift({
+  taskText === '' ? undefined : tasksList.push({
     text:taskText,
     done:false,
     id: Math.random(),
