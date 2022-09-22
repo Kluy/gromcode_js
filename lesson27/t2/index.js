@@ -26,7 +26,7 @@ const onStorageChange = event => {
 window.addEventListener('storage', onStorageChange);
 
 const onDocumentLoaded = () => {
-    counterValueElement.textContent = localStorage.getItem('counter');
+    counterValueElement.textContent = localStorage.getItem('counter') || 0;
 
 }
 
