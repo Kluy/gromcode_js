@@ -60,7 +60,7 @@ const createTaskButton = document.querySelector('.create-task-btn');
 const addNewTask = () => {
   const taskInput = document.querySelector('.task-input');
   const taskText = taskInput.value;
-  taskText === '' ? undefined : tasks.push({text:taskText, done:false});
+  taskText === '' ? undefined : tasks.unshift({text:taskText, done:false});
   taskInput.value = '';
   listElem.textContent = '';
   renderTasks(tasks); 
