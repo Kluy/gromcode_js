@@ -1,8 +1,7 @@
 import { getItem } from "./storage.js";
-import { listElem } from "./handlers.js";
 
 export const renderTasks = () => { 
-    const listElem = document.querySelector('.list');
+  const listElem = document.querySelector('.list');
   const tasksList = getItem('tasksList') || [];
   const tasksElems = tasksList.sort((a, b) => a.done - b.done || new Date(b.date) - new Date(a.date))
   .map(({ text, done, id }) => {
