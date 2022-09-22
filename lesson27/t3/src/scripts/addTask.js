@@ -14,8 +14,6 @@ export const addNewTask = () => {
   });
 
   taskInput.value = '';
-
   setItem('tasksList', tasksList);
-
   renderTasks(); 
 };

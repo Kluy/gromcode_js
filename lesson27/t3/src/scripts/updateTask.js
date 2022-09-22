@@ -2,10 +2,7 @@ import { setItem, getItem } from "./storage.js";
 import { renderTasks } from "./render.js";
 
 export const updateTask = (event) => {
-  let taskId = event.target.dataset.id;
-  if(taskId === undefined){
-    taskId = event.target.firstChild.dataset.id;
-  }
+  const taskId = event.target.classList.contains('list__item') ? event.target.firstChild.dataset.id : event.target.dataset.id;
 
   const tasksList = getItem('tasksList').map((elem) => {
     if (String(elem.id) === taskId){
@@ -13,8 +10,8 @@ export const updateTask = (event) => {
         elem.date = new Date();
     }
     return elem;
- });
+  });
 
-  setItem('tasksList', tasksList)
+  setItem('tasksList', tasksList);
   renderTasks();
 }
