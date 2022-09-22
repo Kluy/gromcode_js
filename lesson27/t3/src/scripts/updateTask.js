@@ -1,6 +1,5 @@
 import { setItem, getItem } from "./storage.js";
 import { renderTasks } from "./render.js";
-import { listElem } from "./handlers.js";
 
 export const updateTask = (event) => {
   let taskId = event.target.dataset.id;
@@ -11,11 +10,10 @@ export const updateTask = (event) => {
   const tasks = getItem('tasks').map((elem) => {
     if (String(elem.id) === taskId){
         elem.done = !elem.done;
+        elem.date = new Date();
     }
     return elem;
  });
-
-  listElem.textContent = '';
 
   setItem('tasks', tasks)
   renderTasks();
