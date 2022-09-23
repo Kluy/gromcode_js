@@ -18,7 +18,7 @@ const getMethodsNames = {
     milliseconds: 'setMilliseconds',
   };
 
- const shmoment = intiValue => {
+ export const shmoment = intiValue => {
     let result = intiValue;
     const calculator = {
       add(unit, value){
