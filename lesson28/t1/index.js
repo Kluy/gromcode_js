@@ -1,11 +1,11 @@
-const calc = intiValue => {
+export const calc = intiValue => {
   let result = intiValue;
   const calculator = {
     add(number){
       result += number;
       return this;
     },
-    substract(number){
+    subtract(number){
       result -= number;
       return this;
     },
