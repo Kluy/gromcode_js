@@ -22,10 +22,8 @@ const getMethodsNames = {
     let result = intiValue;
     const calculator = {
       add(unit, value){
-        if(unit === 'years'){
-           const newValue = result[getMethodsNames[unit]]() + value;
-           result[setMethodsNames[unit]](newValue);
-        }
+        const newValue = result[getMethodsNames[unit]]() + value;
+        result[setMethodsNames[unit]](newValue);
         return this;
       },
       subtract(unit, value){
