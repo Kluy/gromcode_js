@@ -6,6 +6,6 @@ export const initHandlers = () => {
     const listElem = document.querySelector('.list');
     listElem.addEventListener('click', updateTask);
 
-    const createNewTaskButton = document.querySelector('.create-new-task-btn');
+    const createNewTaskButton = document.querySelector('.create-task-btn');
     createNewTaskButton.addEventListener('click', addNewTask);
 }
