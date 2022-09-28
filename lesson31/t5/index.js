@@ -1,5 +1,5 @@
 export const delay = (number) => {
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve) => {
     setTimeout(() => resolve(), number);
   })
   return promise;
