@@ -1,5 +1,5 @@
 'use strict';
 
 export const delay = (delay, callback, context, ...args) => {
-  setTimeout(() => callback(context, args), delay);
+  setTimeout(() => callback.bind(context)(...args), delay);
 }
