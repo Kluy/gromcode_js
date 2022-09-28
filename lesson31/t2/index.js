@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * @param {string} userId
- * @return {promise}
- */
 export const asyncCalculator = numbr => new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log(`Initial value: ${numbr}`);
@@ -16,5 +12,3 @@ export const asyncCalculator = numbr => new Promise((resolve, reject) => {
     resolve(result);
   }, 500)
 })).then(data => console.log(`Doubled value: ${data * 2}`));
-
-asyncCalculator(5);
