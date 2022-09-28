@@ -8,11 +8,11 @@
 
 const time = () => (Math.round(Math.random() * 2 + 1)) * 1000;
 
-const f = (user) => {
-console.log(user);
-}
+// const f = (user) => {
+// console.log(user);
+// }
 // export
-const requestUserData = (userId, callback) => {
+export const requestUserData = (userId, callback) => {
   // put your code here
   
   const user = {
@@ -27,8 +27,5 @@ const requestUserData = (userId, callback) => {
   
 };
 
-
-
-requestUserData(222, f);
-requestUserData('broken', f);
-
+// requestUserData(222, f);
+// requestUserData('broken', f);
