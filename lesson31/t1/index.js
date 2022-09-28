@@ -14,7 +14,7 @@ export const requestUserData = userId => {
         name: 'John',
         userId,
         email: `${userId}@example.com`
-      }))
+      }), 1000)
     }
   })
   return promise;
