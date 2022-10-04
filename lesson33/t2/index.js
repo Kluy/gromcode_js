@@ -34,7 +34,7 @@ const developer3 = {
   userId: 'coder',
   repoId: 'coder'
 }
-getMostActiveDevs(developer));
+getMostActiveDevs(developer);
 getMostActiveDevs(developer2);
 getMostActiveDevs(developer3);
 
