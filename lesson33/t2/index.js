@@ -1,6 +1,3 @@
-
-
-
 const getStartDate = (days) => new Date().setDate(new Date().getDate() - days);
 
 export const getMostActiveDevs = ({days, userId, repoId}) => 
