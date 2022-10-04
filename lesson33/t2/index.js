@@ -18,23 +18,23 @@ export const getMostActiveDevs = ({days, userId, repoId}) => {
   });
 }
   
-const developer = {
-  days: 7,
-  userId: 'Kluy',
-  repoId: 'gromcode_js'
-}
+// const developer = {
+//   days: 7,
+//   userId: 'Kluy',
+//   repoId: 'gromcode_js'
+// }
 
-const developer2 = {
-  days: 7,
-  userId: 'alvarobartt',
-  repoId: 'investiny'
-}
+// const developer2 = {
+//   days: 7,
+//   userId: 'alvarobartt',
+//   repoId: 'investiny'
+// }
 
-const developer3 = {
-  days: 7,
-  userId: 'coder',
-  repoId: 'coder'
-}
+// const developer3 = {
+//   days: 7,
+//   userId: 'coder',
+//   repoId: 'coder'
+// }
 
 
 Promise.all([getMostActiveDevs(developer),getMostActiveDevs(developer2),getMostActiveDevs(developer3)])
