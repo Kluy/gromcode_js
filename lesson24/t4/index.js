@@ -2,8 +2,8 @@ export const studentsBirthDays = (students) => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
   const sortedBirthDays = {};
   const sortedStudents = students.map(elem => {
-      const birthDateParts = elem.birthDate.split('/');
-      elem.birthDate = new Date(birthDateParts[2], birthDateParts[0] - 1, birthDateParts[1]);
+      const [month, day, year] = elem.birthDate.split('/');
+      elem.birthDate = new Date(year, month - 1, day);
       return elem;
     }).sort((a, b) => {
       return a.birthDate > b.birthDate;
@@ -15,7 +15,7 @@ export const studentsBirthDays = (students) => {
       sortedBirthDays[month].push(elem.name); 
     });
 
-    return Object.entries(sortedBirthDays);
+    return sortedBirthDays;
   }
   
   // console.log(studentsBirthDays(
