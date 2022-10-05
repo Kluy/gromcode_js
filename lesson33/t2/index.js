@@ -1,21 +1,3 @@
-// const dev = {
-//   days: 7,
-//   userId: 'Kluy',
-//   repoId: 'gromcode_js'
-// }
-
-// const dev2 = {
-//   days: 7,
-//   userId: 'alvarobartt',
-//   repoId: 'investiny'
-// }
-
-// const dev3 = {
-//   days: 7,
-//   userId: 'coder',
-//   repoId: 'coder'
-// }
-
 const getStartDate = (days) => new Date().setDate(new Date().getDate() - days);
 
 export const getMostActiveDevs = (days, userId, repoId) => 
@@ -33,10 +15,3 @@ export const getMostActiveDevs = (days, userId, repoId) =>
     
     return user;
   })
-
-Promise.all([getMostActiveDevs(7,'Kluy','gromcode_js'),getMostActiveDevs(7,'alvarobartt','investiny'),getMostActiveDevs(7,'coder','coder')])
-.then(result => result.sort((a, b) => b.count - a.count).filter(elem => elem.count === result[0].count));
-
-
-// Promise.all([getMostActiveDevs(dev),getMostActiveDevs(dev2),getMostActiveDevs(dev3)])
-// .then(result => result.sort((a, b) => b.count - a.count).filter(elem => elem.count === result[0].count));
