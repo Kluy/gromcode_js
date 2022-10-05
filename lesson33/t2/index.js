@@ -35,4 +35,4 @@ export const getMostActiveDevs = ({days, userId, repoId}) =>
   })
 
 Promise.all([getMostActiveDevs(dev),getMostActiveDevs(dev2),getMostActiveDevs(dev3)])
-.then(result => console.log(result.sort((a, b) => b.count - a.count).filter(elem => elem.count === result[0].count)));
+.then(result => result.sort((a, b) => b.count - a.count).filter(elem => elem.count === result[0].count));
