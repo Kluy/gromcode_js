@@ -1,23 +1,27 @@
 const formatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
 });
-export const studentsBirthDays = (students) => {
-  const sortedBirthDays = {};
-  const sortedStudents = students
-  .map(elem => {
-      elem.birthDate = new Date(elem.birthDate);
-      return elem;
-    })
-    .sort((a, b) => a.birthDate.getDate() - b.birthDate.getDate())
-    .map(elem => {
-      const month = formatter.format(elem.birthDate);
-      if(sortedBirthDays[month] === undefined){
-        sortedBirthDays[month] = [];
-      }
-      sortedBirthDays[month].push(elem.name); 
-    });
 
-    return sortedBirthDays;
+export const studentsBirthDays = (students) => {
+  const sortedStudents = students  
+    .sort((a, b) => new Date(a.birthDate).getDate() - new Date(b.birthDate).getDate())
+    .reduce((acc, elem) => {
+      const month = formatter.format(new Date(elem.birthDate));
+      return {
+        ...acc,
+        [month]: acc[month] ? acc[month].concat(elem.name) : [elem.name]
+      }
+    }, {})
+    
+    // .map(elem => {
+    //     const month = formatter.format(new Date(elem.birthDate));
+    //   if(sortedBirthDays[month] === undefined){
+    //     sortedBirthDays[month] = [];
+    //   }
+    //   sortedBirthDays[month].push(elem.name); 
+    // });
+
+    return sortedStudents;
   }
 
 // export 
