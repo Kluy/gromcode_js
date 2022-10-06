@@ -1,44 +1,42 @@
-export const studentsBirthDays = (students) => {
-  const sortedBirthDays = {};
-  const sortedStudents = students.map(elem => {
-      elem.birthDate = new Date(elem.birthDate);
-      return elem;
-    }).sort((a, b) => {
-      return a.birthDate.getDate() > b.birthDate.getDate();
-    }).map(elem => {
-      const month = elem.birthDate.getMonth();
-      if(sortedBirthDays[month] === undefined){
-        sortedBirthDays[month] = [];
-      }
-      sortedBirthDays[month].push(elem.name); 
-    });
+// export 
+// const studentsBirthDays = (students) => {
+//   const sortedBirthDays = {};
+//   const sortedStudents = students.map(elem => {
+//       elem.birthDate = new Date(elem.birthDate);
+//       return elem;
+//     }).sort((a, b) => {
+//       return a.birthDate.getDate() > b.birthDate.getDate();
+//     }).map(elem => {
+//       const month = elem.birthDate.getMonth();
+//       if(sortedBirthDays[month] === undefined){
+//         sortedBirthDays[month] = [];
+//       }
+//       sortedBirthDays[month].push(elem.name); 
+//     });
 
-    return sortedBirthDays;
-  }
+//     return sortedBirthDays;
+//   }
 
-// export
-//  const studentsBirthDays = students => {
-//   const bdayObj = students.reduce((acc, student) => {
-//     const month = new Date(student.birthDate).getMonth();
-//     console.log(acc);
+export const studentsBirthDays = students => {
+  const bdayObj = students.reduce((acc, student) => {
+    const month = new Date(student.birthDate).getMonth();
 
-//     return {
-//       ...acc,
-//       [month]: acc[month] ? acc[month].concat(student) : [student],
-//     };
-//   }, {});
-//   console.log(bdayObj);
+    return {
+      ...acc,
+      [month]: acc[month] ? acc[month].concat(student) : [student],
+    };
+  }, {});
 
-//   return Object.entries(bdayObj).reduce(
-//     (acc, [month, studentsList]) => ({
-//       ...acc,
-//       [month]: studentsList
-//       .sort((a, b) => new Date(a.birthDate).getDate() - new Date(b.birthDate).getDate())
-//       .map(({name}) => name),
-//     }),
-//     {},
-//   );
-// }
+  return Object.entries(bdayObj).reduce(
+    (acc, [month, studentsList]) => ({
+      ...acc,
+      [month]: studentsList
+      .sort((a, b) => new Date(a.birthDate).getDate() - new Date(b.birthDate).getDate())
+      .map(({name}) => name),
+    }),
+    {},
+  );
+}
 
   
   // console.log(studentsBirthDays(
