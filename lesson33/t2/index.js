@@ -1,6 +1,13 @@
+// const dev3 = {
+//   days: 7,
+//   userId: 'coder',
+//   repoId: 'coder'
+// }
+
 const getStartDate = (days) => new Date().setDate(new Date().getDate() - days);
 
-export const getMostActiveDevs = ({days, userId, repoId}) => 
+// export
+ const getMostActiveDevs = ({days, userId, repoId}) => 
   fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
   .then(response => response.json())
   .then(result => {
@@ -24,3 +31,8 @@ export const getMostActiveDevs = ({days, userId, repoId}) =>
     const bestDevelopers = devArray.filter(elem => elem.count === maxCommit);
     return bestDevelopers;
   })
+
+//   console.log(
+//   getMostActiveDevs(dev3)
+
+// );
