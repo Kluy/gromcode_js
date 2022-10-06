@@ -8,7 +8,7 @@ export const studentsBirthDays = (students) => {
       elem.birthDate = new Date(elem.birthDate);
       return elem;
     })
-    .sort((a, b) => a.birthDate.getMonth() - b.birthDate.getMonth() || a.birthDate.getDate() - b.birthDate.getDate())
+    .sort((a, b) => a.birthDate.getDate() - b.birthDate.getDate())
     .map(elem => {
       const month = formatter.format(elem.birthDate);
       if(sortedBirthDays[month] === undefined){
