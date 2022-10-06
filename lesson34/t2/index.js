@@ -1,5 +1,5 @@
-
 const baseUrl = 'https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/users';
+
 export function getUserById(userId) {
   // put your code here
   return fetch(`${baseUrl}/${userId}`)
@@ -16,8 +16,6 @@ export function createUser(userData) {
     body: JSON.stringify(userData),
   })
 }
-
-
 
 export function deleteUser(userId) {
   // put your code here
