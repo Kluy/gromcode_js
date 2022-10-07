@@ -41,13 +41,12 @@ body {
     border-radius: 8px;
     background-color: $wheat;
   }
-  &__item-task{
-    width: 550px;
-  }
 
   &__item_done {
     opacity: 0.7;
-    text-decoration: line-through;
+      .list__item-task{
+      text-decoration: line-through;
+      }
   }
 
   &__item:last-child {
@@ -58,7 +57,7 @@ body {
     margin-right: 8px;
   }
   &__item-delete-button{
-
+    margin-left: auto;
     border: 0;
     cursor: pointer;
     transform: rotate(45deg);
