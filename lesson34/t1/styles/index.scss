@@ -1,13 +1,18 @@
+@import 'var.scss';
+
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .title {
   font-size: 24px;
   text-align: center;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .todo-list {
   padding: 8px;
@@ -17,36 +22,49 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  background-color: #ff7f50; }
+  background-color: $coral;
+}
 
 .list {
   padding: 0;
   margin: 0;
   margin: auto;
   width: 100%;
-  list-style-type: none; }
-  .list__item {
+  list-style-type: none;
+  
+  &__item {
     padding: 8px;
     margin-bottom: 8px;
     min-height: 40px;
     display: flex;
     align-items: center;
     border-radius: 8px;
-    background-color: #f5deb3; }
-  .list__item-task {
-    width: 550px; }
-  .list__item_done {
+    background-color: $wheat;
+  }
+  &__item-task{
+    width: 550px;
+  }
+
+  &__item_done {
     opacity: 0.7;
-    text-decoration: line-through; }
-  .list__item:last-child {
-    margin-bottom: 0; }
-  .list__item-checkbox {
-    margin-right: 8px; }
-  .list__item-delete-button {
+    text-decoration: line-through;
+  }
+
+  &__item:last-child {
+    margin-bottom: 0;
+  }
+
+  &__item-checkbox {
+    margin-right: 8px;
+  }
+  &__item-delete-button{
+
     border: 0;
     cursor: pointer;
     transform: rotate(45deg);
-    background-color: transparent; }
+    background-color: transparent;
+  }
+}
 
 .btn {
   margin-left: 16px;
@@ -55,16 +73,17 @@ body {
   outline: none;
   cursor: pointer;
   border-radius: 8px;
-  border: 3px solid #ccc; }
+  border: 3px solid $lightGrey;
+}
 
 .actions {
   margin-bottom: 8px;
-  display: flex; }
+  display: flex;
+}
 
 .task-input {
   flex: 1;
   height: 32px;
   border-radius: 8px;
-  border: 3px solid #ccc; }
-
-/*# sourceMappingURL=styles.css.map */
+  border: 3px solid $lightGrey;
+}
