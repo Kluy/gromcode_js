@@ -9,7 +9,6 @@ const validateForm = () => {
 const submitForm = (event) => {
   event.preventDefault();
   const data = Object.fromEntries(new FormData(formElem));
-  console.log(data);
 
   fetch('https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/register', {
     method: 'POST',
@@ -17,7 +16,7 @@ const submitForm = (event) => {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(data),
-  })
+  }).then(response => response.json()).then(result => alert(result));
   formElem.reset();
 }
 
