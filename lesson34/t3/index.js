@@ -16,7 +16,7 @@ const submitForm = (event) => {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(data),
-  }).then(response => response.json()).then(result => alert(result));
+  }).then(response => response.json()).then(result => alert(Object.entries(result)));
   formElem.reset();
 }
 
