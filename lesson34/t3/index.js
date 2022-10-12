@@ -16,8 +16,7 @@ const submitForm = (event) => {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(data),
-  }).then(response => alert(response.json()));
-  formElem.reset();
+  }).then(response => alert(response.json())).then(() => formElem.reset());
 }
 
 formElem.addEventListener('input', validateForm);
