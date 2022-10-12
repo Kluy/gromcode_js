@@ -1,4 +1,5 @@
-const avatarElem = document.querySelector('.user__avatar');
+import { avatarElem } from "../index.js";
+
 const nameElem = document.querySelector('.user__name');
 const locationElem = document.querySelector('.user__location');
 
