@@ -1,5 +1,4 @@
-// export 
-const parseUser = (JSONstring) => {
+export const parseUser = (JSONstring) => {
     try{
         return JSON.parse(JSONstring)
     }
