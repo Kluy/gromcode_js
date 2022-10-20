@@ -24,6 +24,6 @@
     "sass": "^1.55.0"
   },
   "dependencies": {
-    "core-js": "^3.25.5"
+    "core-js": "^3.5.0"
   }
 }
