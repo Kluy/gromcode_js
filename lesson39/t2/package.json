@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "core-js": "^3.25.5"
+    "core-js": "3"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
