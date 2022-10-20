@@ -1,10 +1,10 @@
 import { initHandlers } from './handlers.js';
 import { renderTasks } from './render.js';
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
   initHandlers();
 });
-var onStorageChange = function onStorageChange(event) {
+const onStorageChange = event => {
   if (event.key !== 'tasksList') return;
   renderTasks();
 };
