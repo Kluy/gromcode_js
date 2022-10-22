@@ -1,13 +1,29 @@
 const path = require('path');
 
 module.exports = {
-  entry: {
-    dashboard: './src/dashboard/index.js',
-    profile: './src/profile/index.js',
-  },
+  entry: './src/index.js',
   output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js'
   },
-  watch: true,
+  module:{
+    rules:[
+      {
+        test: /.s?css$/,
+        use: ['style-loader','css-loader']
+      },
+      {
+        test:/.(jpg|png)$/,
+        use:[
+          {
+          loader:'url-loader',
+          options:{
+            limit:8192,
+            name:'[name].[ext]',
+            outputPath:'images',
+          }
+          }
+        ]
+      }
+    ]
+  }
 };
