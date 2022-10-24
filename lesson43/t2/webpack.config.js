@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
