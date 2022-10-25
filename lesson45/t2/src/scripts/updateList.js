@@ -1,7 +1,7 @@
-import renderTasks from './render';
+import { renderTasks } from './render';
 import { deleteTask, getTasks, updateTask } from './gateway';
 
-export default (event) => {
+export const updateList = (event) => {
   const taskId = event.target.parentElement.dataset.id || event.target.dataset.id;
   if (event.target.classList.contains('list__item-delete-button')) {
     deleteTask(taskId).then(() => renderTasks());

@@ -3,4 +3,7 @@ module.exports = {
   env: {
     browser: true,
   },
+  rules: {
+    'import/prefer-default-export': 0,
+  },
 };

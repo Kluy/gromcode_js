@@ -1,7 +1,7 @@
-import addNewTask from './addTask';
-import updateList from './updateList';
+import { addNewTask } from './addTask';
+import { updateList } from './updateList';
 
-export default () => {
+export const initHandlers = () => {
   const listElem = document.querySelector('.list');
   listElem.addEventListener('click', updateList);
 

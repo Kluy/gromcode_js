@@ -1,7 +1,7 @@
-import renderTasks from './render';
-import addTask from './gateway';
+import { renderTasks } from './render';
+import { addTask } from './gateway';
 
-export default () => {
+export const addNewTask = () => {
   const taskInput = document.querySelector('.task-input');
   const taskText = taskInput.value;
 

@@ -1,5 +1,5 @@
-import initHandlers from './scripts/handlers';
-import renderTasks from './scripts/render';
+import { initHandlers } from './scripts/handlers';
+import { renderTasks } from './scripts/render';
 import './index.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
