@@ -8,10 +8,12 @@ class UserMenu extends Component {
   render() {
     return (
       <div className="menu">
-        <span className="menu__greeting">Hello, GitHub</span>
+        <span className="menu__greeting">
+          Hello, {this.props.userData.name}
+        </span>
         <img
           alt="User Avatar"
-          src="https://avatars1.githubusercontent.com/u/9919?v=4"
+          src={this.props.userData.avatar_url}
           className="menu__avatar"
         />
       </div>
