@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import UserMenu from './Profile';
-import UserProfile from './ShoppingCart';
+import Profile from './Profile';
 import ShoppingCart from './ShoppingCart';
 
 class App extends Component {
@@ -15,6 +14,7 @@ class App extends Component {
         <h1 className="title">Hello, John Doe</h1>
         <main className="content">
           <ShoppingCart />
+          <Profile />
         </main>
       </div>
     );
