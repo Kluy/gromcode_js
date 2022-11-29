@@ -5,13 +5,15 @@ import UserProfile from './UserProfile';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      userData: {},
-    };
+    this.state = {};
   }
 
   componentDidMount() {
-    fetch(`https://api.github.com/users/${this.props.userId}`)
+    this.fetchUser(this.props.userId);
+  }
+
+  fetchUser = (userId) => {
+    fetch(`https://api.github.com/users/${userId}`)
       .then((response) => response.json())
       .then(({ name, location, avatar_url }) =>
         this.setState(
@@ -22,7 +24,7 @@ class App extends Component {
           })
         )
       );
-  }
+  };
 
   render() {
     return (

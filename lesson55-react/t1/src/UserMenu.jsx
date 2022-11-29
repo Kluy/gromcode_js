@@ -1,6 +1,8 @@
 import React from 'react';
 
 const UserMenu = (props) => {
+  if (!props.userData) return null;
+
   return (
     <div className="menu">
       <span className="menu__greeting">Hello, {props.userData.name}</span>
