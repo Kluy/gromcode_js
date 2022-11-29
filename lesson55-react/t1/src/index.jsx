@@ -5,4 +5,4 @@ import './index.scss';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
-root.render(<App userId="google" />);
+root.render(<App userId="github" />);
