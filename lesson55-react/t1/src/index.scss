@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -9,47 +5,65 @@ body {
 #root {
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-form {
-  width: 300px;
-  background-color: aqua;
-  padding: 16px;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  display: flex;
+  padding: 8px;
+  background-color: cornsilk;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  &__greeting {
+    opacity: 0.5;
+  }
+
+  &__avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-left: 16px;
+  }
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
   margin: auto;
-}
+  align-items: center;
 
-.form-title {
-  text-align: center;
-  text-transform: uppercase;
-}
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
 
-.form-control {
-  margin-bottom: 8px;
-}
+  &__info {
+    text-align: center;
+    font-size: 24px;
+    margin: 32px;
+  }
 
-.form-label {
-  display: block;
-  margin-bottom: 4px;
-}
+  &__name {
+    font-weight: 700;
+  }
 
-.form-input {
-  width: 100%;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid grey;
-  padding: 4px;
-  outline: none;
-}
-
-.submit-button {
-  width: 100%;
-  height: 32px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  margin-top: 16px;
-  background-color: coral;
-  color: white;
+  &__location {
+    opacity: 0.5;
+    margin-left: 16px;
+  }
 }

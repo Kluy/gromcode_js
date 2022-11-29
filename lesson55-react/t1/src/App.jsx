@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import UserForm from './UserForm';
+import UserMenu from './UserMenu';
+import UserProfile from './UserProfile';
 
 class App extends Component {
   state = {
@@ -11,7 +12,14 @@ class App extends Component {
   };
 
   render() {
-    return <UserForm onSubmit={this.createUser} />;
+    return (
+      <div className="page">
+        <header className="header">
+          <UserMenu userData />
+        </header>
+        <UserProfile />
+      </div>
+    );
   }
 }
 
