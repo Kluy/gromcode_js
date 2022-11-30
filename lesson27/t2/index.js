@@ -6,7 +6,6 @@ const onCounterChange = event => {
     return;
 
     const action = event.target.dataset.action;
-    console.log(action);
 
     const previousValue = Number(counterValueElement.textContent);
 
