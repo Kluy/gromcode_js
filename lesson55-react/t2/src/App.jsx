@@ -11,6 +11,11 @@ class App extends Component {
     }};
   }
 
+  handleChange = (e) => {
+    console.log(e.target.name);
+    this.setState(this.state.userData = {...this.state.userData, [e.target.name]:e.target.value})
+  }
+
   render() {
 
     const {firstName, lastName} = this.state.userData;
@@ -19,7 +24,7 @@ class App extends Component {
         <h1 className="title">Hello, {firstName} {lastName}</h1>
         <main className="content">
           <ShoppingCart userName={firstName} />
-          <Profile userData={this.state.userData} />
+          <Profile onChange={this.handleChange} userData={this.state.userData} />
         </main>
       </div>
     );

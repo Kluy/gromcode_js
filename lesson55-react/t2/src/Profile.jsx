@@ -4,7 +4,7 @@ import UserForm from './UserForm';
 const Profile = (props) => {
   return (
     <div className="column">
-      <UserForm userData={props.userData} />
+      <UserForm onChange={props.onChange} userData={props.userData} />
     </div>
   );
 };
