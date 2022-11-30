@@ -4,7 +4,7 @@ import UserForm from './UserForm';
 const Profile = (props) => {
   return (
     <div className="column">
-      <UserForm />
+      <UserForm userData={props.userData} />
     </div>
   );
 };
