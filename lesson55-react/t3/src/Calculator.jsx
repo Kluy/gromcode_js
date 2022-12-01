@@ -5,16 +5,16 @@ import TemperatureInput from './TemperatureInput';
 class Calculator extends Component {
   constructor(props) {
     super(props);
-    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
-    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
     this.state = { temperature: '', scale: 'c' };
   }
 
-  handleCelsiusChange = (temperature) => {
-    this.setState({ scale:'c', temperature });
+  handleCelsiusChange = (e) => {
+    const temperature = e.target.value;
+    this.setState({ scale:'c',  temperature});
   }
 
-  handleFahrenheitChange = (temperature) => {
+  handleFahrenheitChange = (e) => {
+    const temperature = e.target.value;
     this.setState({ scale:'f', temperature });
   }
 
@@ -35,12 +35,12 @@ class Calculator extends Component {
   render() {
     const scale = this.state.scale;
     const temperature = this.state.temperature;
-    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
-    const fahrenheit = scale === 'f' ? tryConvert(temperature, toFahrenheit) : temperature;
+    const celsius = scale === 'f' ? this.tryConvert(temperature, this.toCelsius) : temperature;
+    const fahrenheit = scale === 'c' ? this.tryConvert(temperature, this.toFahrenheit) : temperature;
     return (
       <div>
-        <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange}/>
-        <TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange}/>
+        <TemperatureInput scale='c' temperature={celsius} onTemperatureChange={this.handleCelsiusChange}/>
+        <TemperatureInput scale='f' temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange}/>
         <BoilingVerdict celsius={parseFloat(celsius)} />
       </div>
     );
