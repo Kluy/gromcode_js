@@ -11,10 +11,22 @@ class FilterableProductTable extends Component {
     };
   }
 
+  handleFilterTextChange = (e) => {
+    this.setState({ filterText: e.target.value });
+  };
+
+  handleInStockChange = (e) => {
+    this.setState({
+      inStockOnly: e.target.checked,
+    });
+  };
+
   render() {
     return (
       <div>
         <SearchBar
+          handleInStockChange={this.handleInStockChange}
+          handleFilterTextChange={this.handleFilterTextChange}
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
         />
