@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductRow = (props) => {
-  const product = this.props.product;
+  const product = props.product;
   const name = product.stocked ? (
     product.name
   ) : (
