@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Expand from './Expand';
 
-class App extends Component {
-
-  render() {
+const App = () => {
     return (
       <div className="app">
         <Expand title='Some title'>
@@ -15,6 +13,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
 export default App;
