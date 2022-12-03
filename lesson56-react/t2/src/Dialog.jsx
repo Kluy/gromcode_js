@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 
-class Dialog extends Component {
-  render(){
+const Dialog = (props) => {
 
-    if(this.props.isOpen)
+    if(props.isOpen)
     return (
       <div className="dialog">
         <div className="dialog__heading">
-          <h4 className="dialog__title">{this.props.title}</h4>
-          <button onClick={this.props.onClose} className="dialog__close-btn">+</button>
+          <h4 className="dialog__title">{props.title}</h4>
+          <button onClick={props.onClose} className="dialog__close-btn">+</button>
         </div>
         <div className="dialog__content">
-          {this.props.children}
+          {props.children}
         </div>
       </div>
     );
-  }
 };
 
 export default Dialog;
