@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
-class Dialog extends PureComponent {
+class Dialog extends Component {
   render(){
 
     if(this.props.isOpen)
