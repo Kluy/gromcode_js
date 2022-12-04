@@ -6,7 +6,7 @@ const SearchBar = (props) => {
       <input
         onChange={props.handleFilterTextChange}
         type="text"
-        placeholder="Search.."
+        placeholder="Search..."
         value={props.filterText}
       />
       <p>

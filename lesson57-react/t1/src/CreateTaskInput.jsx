@@ -1,13 +1,12 @@
 import React from 'react';
-import ToDoList from './ToDoList';
 
-const TasksList = () => {
+const CreateTaskInput = () => {
   return (
-    <div class="create-task">
-      <input class="create-task__input" type="text" value="" />
-      <button class="btn create-task__btn">Create</button>
+    <div className="create-task">
+      <input className="create-task__input" type="text" value="" />
+      <button className="btn create-task__btn">Create</button>
     </div>
   );
 }
 
-export default TasksList;
+export default CreateTaskInput;

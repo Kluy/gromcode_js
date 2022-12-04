@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Task from './Task';
 
-const TasksList = () => {
-  return (
-    <ul class="list">
-      <li class="list-item">
-        <input type="checkbox" class="list-item__checkbox" />
-        Learn React
-        <button class="list-item__delete-btn"></button>
-      </li>
-      <li class="list-item list-item_done">
-        <input type="checkbox" class="list-item__checkbox" />
-        Lear HTML / CSS
-        <button class="list-item__delete-btn"></button>
-      </li>
-      <li class="list-item list-item_done">
-        <input type="checkbox" class="list-item__checkbox" />
-        Learn JavaScript
-        <button class="list-item__delete-btn"></button>
-      </li>
-      <li class="list-item list-item_done">
-        <input type="checkbox" class="list-item__checkbox" />
-        Learn Dev Tools
-        <button class="list-item__delete-btn"></button>
-      </li>
-    </ul>
-  );
+class TasksList extends Component {
+  state = {
+    tasks:[
+    {text:"Learn React", done:false, id:1},
+    {text:"Lear HTML / CSS", done:false, id:2},
+    {text:"Learn JavaScript", done:false, id:3},
+    {text:"Learn Dev Tools", done:true, id:4},
+  ],}
+
+  handleDone = (e) => {
+    const arr = [...this.state.tasks]
+    arr[e.target.id - 1].done = !arr[e.target.id - 1].done;
+    this.setState({tasks:arr})
+  }
+
+  render(){
+    return (
+        <ul className="list">
+          {this.state.tasks.map(elem => <Task handleDone={this.handleDone} key={elem.id} {...elem} />)}
+        </ul>
+    );
+  }
 }
 
 export default TasksList;

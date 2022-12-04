@@ -3,7 +3,7 @@ import React from 'react';
 class OddNumbers extends React.Component {
 
   shouldComponentUpdate(nextProps){
-    return nextProps.number% 2 === 1;
+    return nextProps.number % 2 === 1;
   }
   render(){  
     return (
