@@ -1,5 +1,4 @@
 import React from 'react';
-import ToDoList from './ToDoList';
 
 const TasksList = () => {
   return (
