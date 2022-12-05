@@ -7,7 +7,6 @@ const baseUrl = 'https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/tasks-react/
 class ToDoList extends Component {
 
  state = {
-    input:'',
     tasks:[],
   }
 
@@ -32,7 +31,7 @@ class ToDoList extends Component {
   }
 
   handleTaskCreate = () => {
-    const newTask = {text: this.state.input, date:new Date(), done:false};
+    const newTask = {text: this.state.input, done:false};
     this.setState({input:''});
 
     fetch(`${baseUrl}`, {
