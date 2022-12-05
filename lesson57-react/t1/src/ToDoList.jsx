@@ -2,41 +2,83 @@ import React, { Component } from 'react';
 import CreateTaskInput from './CreateTaskInput';
 import TasksList from './TasksList';
 
+const baseUrl = 'https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/tasks/'
+
 class ToDoList extends Component {
 
  state = {
     input:'',
-    tasks:[
-      {text:"Learn React", done:false, id:1},
-      {text:"Lear HTML / CSS", done:false, id:2},
-      {text:"Learn JavaScript", done:false, id:3},
-      {text:"Learn Dev Tools", done:true, id:4},
-    ]
+    tasks:[],
   }
 
-  handleDone = (e) => {
-    const arr = [...this.state.tasks];
-    arr[e.target.id - 1].done = !arr[e.target.id - 1].done;
-    this.setState({tasks:arr});
+  componentDidMount(){
+    this.fetchData();
+  }
+
+  handleTaskUpdate = (taskId) => {
+    const task = this.state.tasks.find(elem => elem.id = taskId);
+    task.done = !task.done;
+    fetch(`${baseUrl}${taskId}`, {
+      method: 'PUT',
+       headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(task)
+     }).then(response => {
+      if(response.ok)
+      this.fetchData();
+      else throw new Error('Task didn"t updated');
+    });
+  }
+
+  fetchData = () => {
+    fetch(`${baseUrl}`)
+    .then(response => response.json())
+    .then(result => {
+      this.setState({tasks:result})
+    });
+  }
+
+  handleTaskCreate = () => {
+    const newTask = {task: this.state.input, date:new Date(), done:false};
+    
+    fetch(`${baseUrl}`, {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body:JSON.stringify(newTask)
+    }).then(response => {
+      if(response.ok)
+      this.fetchData();
+      else throw new Error('Task didn"t created');
+    });
+  }
+
+  handleTaskDelete = (taskId) => {
+    console.log(taskId);
+     fetch(`${baseUrl}${taskId}`,
+     {
+        method: 'DELETE',
+     }).then(response => {
+      if(response.ok)
+      this.fetchData();
+      else throw new Error('Task didn"t deleted');
+    });
   }
 
   handleChange = (e) => {
     this.setState({input:e.target.value});
   }
 
-  handleCreate = () => {
-     const arr = [...this.state.tasks];
-     arr.push({text: this.state.input, done:false, id:arr.length + 1});
-     this.setState({tasks:arr});
-  }
-
   render(){
+    const sortArr = this.state.tasks.sort((a, b) => a.done - b.done);
     return (
       <>
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
-          <CreateTaskInput input={this.state.input} onCreate={this.handleCreate} onChange={this.handleChange} />
-          <TasksList tasks={this.state.tasks} onDone={this.handleDone} />
+          <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleChange} />
+          <TasksList tasks={sortArr} onChange={this.handleTaskUpdate} onDelete={this.handleTaskDelete} />
         </main>
       </>
     );

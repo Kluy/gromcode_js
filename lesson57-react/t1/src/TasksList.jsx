@@ -19,7 +19,7 @@ class TasksList extends Component {
   render(){
     return (
         <ul className="list">
-          {this.props.tasks.map(elem => <Task onDone={this.props.onDone} key={elem.id} {...elem} />)}
+          {this.props.tasks.map(elem => <Task onChange={this.props.onChange} onDelete={this.props.onDelete} key={elem.id} {...elem} />)}
         </ul>
     );
   }
