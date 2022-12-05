@@ -10,7 +10,7 @@ class Task extends PureComponent  {
     return (
       <li  className={listItemClasses}>
          <input onClick={() => this.props.onChange(this.props.id)} type="checkbox" defaultChecked={this.props.done} className="list-item__checkbox" />
-            {this.props.task}
+            <span className='list-item__text'>{this.props.task}</span>
          <button onClick={() => this.props.onDelete(this.props.id)} className="list-item__delete-btn"></button>
       </li>
     );
