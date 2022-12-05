@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CreateTaskInput from './CreateTaskInput';
 import TasksList from './TasksList';
 
-const baseUrl = 'https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/tasks/'
+const baseUrl = 'https://633ecd660dbc3309f3bda154.mockapi.io/api/v1/tasks-react/'
 
 class ToDoList extends Component {
 
@@ -16,8 +16,8 @@ class ToDoList extends Component {
   }
 
   handleTaskUpdate = (taskId) => {
-    const {done, task, date} = this.state.tasks.find(elem => elem.id === taskId);
-    const updatedTask = {task, date, done:!done};
+    const {done, text} = this.state.tasks.find(elem => elem.id === taskId);
+    const updatedTask = {text, done:!done};
     fetch(`${baseUrl}${taskId}`, {
       method: 'PUT',
       headers: {
@@ -32,7 +32,7 @@ class ToDoList extends Component {
   }
 
   handleTaskCreate = () => {
-    const newTask = {task: this.state.input, date:new Date(), done:false};
+    const newTask = {text: this.state.input, date:new Date(), done:false};
     this.setState({input:''});
 
     fetch(`${baseUrl}`, {
@@ -73,13 +73,13 @@ class ToDoList extends Component {
   }
 
   render(){
-    const sortArr = this.state.tasks.sort((a, b) => a.done - b.done);
+    const sortedTasks = this.state.tasks.sort((a, b) => a.done - b.done);
     return (
       <>
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
           <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleChangeInput} />
-          <TasksList tasks={sortArr} onChange={this.handleTaskUpdate} onDelete={this.handleTaskDelete} />
+          <TasksList tasks={sortedTasks} onChange={this.handleTaskUpdate} onDelete={this.handleTaskDelete} />
         </main>
       </>
     );
