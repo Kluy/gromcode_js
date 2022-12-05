@@ -16,14 +16,14 @@ class ToDoList extends Component {
   }
 
   handleTaskUpdate = (taskId) => {
-    const task = this.state.tasks.find(elem => elem.id === taskId);
-    task.done = !task.done;
+    const {done, task, date} = this.state.tasks.find(elem => elem.id === taskId);
+    const updatedTask = {task, date, done:!done};
     fetch(`${baseUrl}${taskId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body:JSON.stringify(task)
+      body:JSON.stringify(updatedTask)
      }).then(response => {
       if(response.ok)
       this.fetchData();
