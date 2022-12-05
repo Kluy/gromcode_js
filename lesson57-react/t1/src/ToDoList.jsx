@@ -34,7 +34,7 @@ class ToDoList extends Component {
   handleTaskCreate = () => {
     const newTask = {task: this.state.input, date:new Date(), done:false};
     this.setState({input:''});
-    
+
     fetch(`${baseUrl}`, {
       method:'POST',
       headers:{
@@ -68,7 +68,7 @@ class ToDoList extends Component {
     });
   }
 
-  handleChange = (e) => {
+  handleChangeInput = (e) => {
     this.setState({input:e.target.value});
   }
 
@@ -78,7 +78,7 @@ class ToDoList extends Component {
       <>
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
-          <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleChange} />
+          <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleChangeInput} />
           <TasksList tasks={sortArr} onChange={this.handleTaskUpdate} onDelete={this.handleTaskDelete} />
         </main>
       </>

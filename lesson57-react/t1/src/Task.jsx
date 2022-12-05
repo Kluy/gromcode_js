@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class Task extends PureComponent  {
@@ -14,6 +15,17 @@ class Task extends PureComponent  {
       </li>
     );
   }
+}
+
+Task.propTypes = {
+  done:PropTypes.bool,
+  id:PropTypes.string.isRequired,
+  onChange:PropTypes.func.isRequired,
+  onDelete:PropTypes.func.isRequired,
+}
+
+Task.defaultProps = {
+  done:false,
 }
 
 export default Task;

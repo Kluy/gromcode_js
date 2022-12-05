@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Task from './Task';
 
 class TasksList extends Component {
-  // state = {
-  //   tasks:[
-  //   {text:"Learn React", done:false, id:1},
-  //   {text:"Lear HTML / CSS", done:false, id:2},
-  //   {text:"Learn JavaScript", done:false, id:3},
-  //   {text:"Learn Dev Tools", done:true, id:4},
-  // ],}
-
-  // handleDone = (e) => {
-  //   const arr = [...this.state.tasks]
-  //   arr[e.target.id - 1].done = !arr[e.target.id - 1].done;
-  //   this.setState({tasks:arr})
-  // }
 
   render(){
     return (
@@ -23,6 +11,17 @@ class TasksList extends Component {
         </ul>
     );
   }
+}
+
+TasksList.propTypes = {
+  tasks:PropTypes.arrayOf(PropTypes.object),
+  onChange:PropTypes.func.isRequired,
+  onDelete:PropTypes.func.isRequired,
+}
+
+TasksList.defaultProps = {
+  done:false,
+  tasks:[],
 }
 
 export default TasksList;
