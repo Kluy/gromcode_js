@@ -16,26 +16,18 @@ class ToDoList extends Component {
   }
 
   handleTaskUpdate = (taskId) => {
-    const task = this.state.tasks.find(elem => elem.id = taskId);
+    const task = this.state.tasks.find(elem => elem.id === taskId);
     task.done = !task.done;
     fetch(`${baseUrl}${taskId}`, {
       method: 'PUT',
-       headers: {
+      headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body: JSON.stringify(task)
+      body:JSON.stringify(task)
      }).then(response => {
       if(response.ok)
       this.fetchData();
       else throw new Error('Task didn"t updated');
-    });
-  }
-
-  fetchData = () => {
-    fetch(`${baseUrl}`)
-    .then(response => response.json())
-    .then(result => {
-      this.setState({tasks:result})
     });
   }
 
@@ -49,14 +41,15 @@ class ToDoList extends Component {
       },
       body:JSON.stringify(newTask)
     }).then(response => {
-      if(response.ok)
-      this.fetchData();
+      if(response.ok){
+        this.setState({input:''})
+        this.fetchData();
+      }
       else throw new Error('Task didn"t created');
     });
   }
 
   handleTaskDelete = (taskId) => {
-    console.log(taskId);
      fetch(`${baseUrl}${taskId}`,
      {
         method: 'DELETE',
@@ -64,6 +57,14 @@ class ToDoList extends Component {
       if(response.ok)
       this.fetchData();
       else throw new Error('Task didn"t deleted');
+    });
+  }
+
+   fetchData = () => {
+    fetch(`${baseUrl}`)
+    .then(response => response.json())
+    .then(result => {
+      this.setState({tasks:result})
     });
   }
 
