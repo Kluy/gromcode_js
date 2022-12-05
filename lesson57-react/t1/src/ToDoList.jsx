@@ -33,6 +33,7 @@ class ToDoList extends Component {
 
   handleTaskCreate = () => {
     const newTask = {task: this.state.input, date:new Date(), done:false};
+    this.setState({input:''});
     
     fetch(`${baseUrl}`, {
       method:'POST',
@@ -42,7 +43,6 @@ class ToDoList extends Component {
       body:JSON.stringify(newTask)
     }).then(response => {
       if(response.ok){
-        this.setState({input:''})
         this.fetchData();
       }
       else throw new Error('Task didn"t created');
