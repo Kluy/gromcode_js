@@ -50,9 +50,8 @@ class ToDoList extends Component {
 
   handleTaskDelete = (taskId) => {
      fetch(`${baseUrl}${taskId}`,
-     {
-        method: 'DELETE',
-     }).then(response => {
+     {method: 'DELETE',})
+     .then(response => {
       if(response.ok)
       this.fetchData();
       else throw new Error('Task didn"t deleted');
@@ -61,13 +60,16 @@ class ToDoList extends Component {
 
    fetchData = () => {
     fetch(`${baseUrl}`)
-    .then(response => response.json())
+    .then(response => {
+      if(response.ok)
+      return response.json();
+    })
     .then(result => {
       this.setState({tasks:result})
     });
   }
 
-  handleChangeInput = (e) => {
+  handleInputChange = (e) => {
     this.setState({input:e.target.value});
   }
 
@@ -77,7 +79,7 @@ class ToDoList extends Component {
       <>
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
-          <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleChangeInput} />
+          <CreateTaskInput input={this.state.input} onCreate={this.handleTaskCreate} onChange={this.handleInputChange} />
           <TasksList tasks={sortedTasks} onChange={this.handleTaskUpdate} onDelete={this.handleTaskDelete} />
         </main>
       </>
