@@ -8,12 +8,15 @@ class Task extends PureComponent {
       'list-item_done': this.props.done,
     });
     return (
-      <li className={listItemClasses}>
+      <li
+        onClick={() => this.props.onChange(this.props.id)}
+        className={listItemClasses}
+      >
         <input
-          onClick={() => this.props.onChange(this.props.id)}
           type="checkbox"
-          defaultChecked={this.props.done}
+          checked={this.props.done}
           className="list-item__checkbox"
+          onChange={() => this.props.onChange(this.props.id)}
         />
         <span className="list-item__text">{this.props.text}</span>
         <button
