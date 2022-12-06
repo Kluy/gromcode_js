@@ -1,27 +1,65 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import CreateTaskInput from './CreateTaskInput';
 import Task from './Task';
+import { createTask, deleteTask, fetchData, updateTask } from './gateway';
 
 class TasksList extends Component {
+  state = {
+    tasks: [],
+  };
 
-  render(){
+  componentDidMount() {
+    this.renderTasks();
+  }
+
+  renderTasks = () => {
+    fetchData().then((result) => this.setState({ tasks: result }));
+  };
+
+  handleTaskUpdate = (taskId) => {
+    const { done, text } = this.state.tasks.find((elem) => elem.id === taskId);
+    const updatedTask = { text, done: !done };
+
+    updateTask(taskId, updatedTask).then((result) => this.renderTasks());
+  };
+
+  handleTaskCreate = () => {
+    const newTask = { text: this.state.input, done: false };
+    this.setState({ input: '' });
+    createTask(newTask).then((result) => this.renderTasks());
+  };
+
+  handleTaskDelete = (taskId) => {
+    deleteTask(taskId).then((result) => this.renderTasks());
+  };
+
+  handleInputChange = (e) => {
+    this.setState({ input: e.target.value });
+  };
+
+  render() {
+    const sortedTasks = this.state.tasks.sort((a, b) => a.done - b.done);
+
     return (
+      <main className="todo-list">
+        <CreateTaskInput
+          input={this.state.input}
+          onCreate={this.handleTaskCreate}
+          onChange={this.handleInputChange}
+        />
         <ul className="list">
-          {this.props.tasks.map(elem => <Task onChange={this.props.onChange} onDelete={this.props.onDelete} key={elem.id} {...elem} />)}
+          {sortedTasks.map((elem) => (
+            <Task
+              onChange={this.handleTaskUpdate}
+              onDelete={this.handleTaskDelete}
+              key={elem.id}
+              {...elem}
+            />
+          ))}
         </ul>
+      </main>
     );
   }
-}
-
-TasksList.propTypes = {
-  tasks:PropTypes.arrayOf(PropTypes.object),
-  onChange:PropTypes.func.isRequired,
-  onDelete:PropTypes.func.isRequired,
-}
-
-TasksList.defaultProps = {
-  done:false,
-  tasks:[],
 }
 
 export default TasksList;
