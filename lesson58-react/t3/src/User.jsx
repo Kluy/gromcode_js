@@ -7,7 +7,7 @@ class User extends Component {
      this.state = {
       name:'',
       location:'',
-      avatar_url:'https://avatars1.githubusercontent.com/u/9919?v=4'
+      avatar_url:'',
     }
   }
 
