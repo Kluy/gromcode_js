@@ -32,5 +32,4 @@ export const fetchData = () =>
   fetch(`${baseUrl}`)
     .then((response) => {
       if (response.ok) return response.json();
-    })
-    .then((result) => result);
+    });
