@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import Home from './Home';
-import Products from './Users';
+import Users from './Users';
 
 const App = () => {
   return (

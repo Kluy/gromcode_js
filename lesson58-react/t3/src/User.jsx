@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { fetchData } from './gateway';
 
-const User = ({ match }) => {
+class User extends Component {
+  constructor(props){
+    super(props);
+     this.state = {
+      name:'',
+      location:'',
+      avatar_url:'https://avatars1.githubusercontent.com/u/9919?v=4'
+    }
+  }
+
+render (){
+
+ fetchData(this.props.match.params.userId)
+    .then(({name, location, avatar_url}) => {
+      this.setState({
+        name:name,
+        location:location,
+        avatar_url:avatar_url
+      });
+    }
+  )
+
   return (
-    <div class="user">
+    <div className="user">
       <img
         alt="User Avatar"
-        src="https://avatars1.githubusercontent.com/u/9919?v=4"
-        class="user__avatar"
-      />
-      <div class="user__info">
-        <span class="user__name">GitHub</span>
-        <span class="user__location">San Francisco,CA</span>
+        src={this.state.avatar_url}
+        className="user__avatar"
+        />
+      <div className="user__info">
+        <span className="user__name">{this.state.name}</span>
+        <span className="user__location">{this.state.location}</span>
       </div>
     </div>
   );
+}
 };
 
 export default User;
