@@ -20,11 +20,10 @@ const ConnectionStatus = () => {
   }, [onlineStatus]);
 
 
-   const onlineClass = classNames('status', {
-      'status_offline': onlineStatus === 'offline',
-    });
   return (
-    <div className={onlineClass}>{onlineStatus}</div>
+    <div className={classNames('status', {
+      'status_offline': onlineStatus === 'offline',
+    })}>{onlineStatus}</div>
   );
 };
 
