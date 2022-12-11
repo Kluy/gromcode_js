@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import classNames from 'classnames';
+
 
 const ConnectionStatus = () => {
   
@@ -18,7 +20,9 @@ const ConnectionStatus = () => {
   }, [onlineStatus]);
 
 
-  const onlineClass = onlineStatus === 'online' ? "status" : "status status_offline"
+   const onlineClass = classNames('status', {
+      'status_offline': onlineStatus === 'offline',
+    });
   return (
     <div className={onlineClass}>{onlineStatus}</div>
   );
