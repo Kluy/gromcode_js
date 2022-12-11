@@ -5,7 +5,7 @@ const User = () => {
 
   const [user, setUser] = useState({});
   const {userId} = useParams();
-  
+
   useEffect(() => {
     fetch(`https://api.github.com/users/${userId}`)
     .then(response => response.json())
