@@ -1,31 +1,25 @@
 import React, {useState, useEffect} from 'react';
+import moment from 'moment';
 
 
 const Clock = (props) => {
-  
-  const [onlineStatus, setStatus] = useState('online');
-  
-  const toggleStatus = (e) => {
-   setStatus(e.type)
-  }
+
+  const newTime = () => moment(new Date()).add(props.offset,'hours').format('h:mm:ss a');
+  const [time, setTime] = useState(newTime);
   
   useEffect(() => {
-    window.addEventListener('online', toggleStatus);
-    window.addEventListener('offline', toggleStatus);
-    return () => {
-      window.removeEventListener('online', toggleStatus);
-      window.removeEventListener('offline', toggleStatus);
-  }
-  }, [onlineStatus]);
+    setInterval(() => {setTime(newTime)}, 1000);
+    return () => {}
+  }, [time]);
 
 
   return (
     <div className="clock">
-     <div className="clock__location">
-       {props.location}
-    </div>
-    <div className="clock__time">
-       7:00:51 AM
+      <div className="clock__location">
+        {props.location}
+      </div>
+      <div className="clock__time">
+        {time}
       </div>
     </div>
   );

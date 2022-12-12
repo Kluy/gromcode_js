@@ -4,13 +4,11 @@ import classNames from 'classnames';
 
 const ConnectionStatus = () => {
   
-  const [time, setTime] = useState(0);
+  const [onlineStatus, setStatus] = useState('online');
   
-  const timer = (e) => {
-    setInterval(() => {
-      setTime()
-    }, 1000);
-    }
+  const toggleStatus = (e) => {
+   setStatus(e.type)
+  }
   
   useEffect(() => {
     window.addEventListener('online', toggleStatus);
