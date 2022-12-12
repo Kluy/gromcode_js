@@ -8,8 +8,8 @@ const Clock = (props) => {
   const [time, setTime] = useState(newTime);
   
   useEffect(() => {
-    setInterval(() => {setTime(newTime)}, 1000);
-    return () => {}
+    const intervalId = setInterval(() => {setTime(newTime)}, 1000);
+    return () => {clearInterval(intervalId)}
   }, [time]);
 
 
