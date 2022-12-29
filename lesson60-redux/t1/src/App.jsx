@@ -1,14 +1,26 @@
 import React from 'react';
-import Clock from './Clock';
+import ThemedButton from './ThemedButton';
 
 const App = () => {
+
+  const theme = {
+    dark:{
+      fontColor:'#ffffff',
+      background:'#222222',
+    },
+    light:{
+      fontColor:'#000000',
+      background:'#eeeeee'
+    }
+  }
+
   return (
-    <>
-      <Clock location='London' offset={0}/>
-      <Clock location='Berlin' offset={1}/>
-      <Clock location='Kyiv' offset={2}/>
-    </>
+    <div>
+      <ThemedButton />
+    </div>
   );
 }
+
+export const ThemeContext = React.createContext(theme.dark);
 
 export default App;
