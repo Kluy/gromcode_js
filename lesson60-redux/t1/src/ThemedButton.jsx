@@ -1,15 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import moment from 'moment';
+import React from 'react';
+import { ThemeContext } from './theme-context';
 
+class ThemedButton extends React.Component{
 
-const ThemedButton = () => {
-  return (
-    <>
-  <button class="btn">Dynamic Theme</button>
-  <button class="btn">Default Theme</button>
-    </>
-
-  );
+  render(){
+    return (
+      <button {...this.props} style={{
+        backgroundColor: this.context.background,
+        color: this.context.fontColor,
+      }} className="btn"/>
+      );
+    }
 };
+
+ThemedButton.contextType = ThemeContext;
 
 export default ThemedButton;
