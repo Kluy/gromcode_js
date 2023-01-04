@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './Header';
 import { UserContext } from './user-context';
 
-const App = () => {
+class App extends React.Component {
 
-  const [userData, setUserData] = useState({name:'Nikola Tesla', avatar_url:'https://avatars3.githubusercontent.com/u10001'})
-
-  return (
-    <div className='page'>
-      <UserContext.Provider value={userData}>
-        <Header/>
-      </UserContext.Provider>
-    </div>
-  );
+  state = {
+    userData: {
+      name:'Nikola Tesla',
+      avatar_url:'https://avatars3.githubusercontent.com/u10001'
+    }
+  }
+  render(){
+    return (
+      <div className='page'>
+        <UserContext.Provider value={this.state.userData}>
+          <Header/>
+        </UserContext.Provider>
+      </div>
+    );
+}  
 }
 
 
