@@ -18,8 +18,7 @@ class App extends React.Component {
         </UserContext.Provider>
       </div>
     );
-}  
+  }  
 }
-
 
 export default App;
