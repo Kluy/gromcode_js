@@ -22,14 +22,14 @@ export const reset = () => {
   };
 };
 
-const counterReducer = (state = 0, action) => {
+const counterReducer = (state = [], action) => {
   switch (action.type) {
     case INCREMENT:
-      return state + 1;
+      return state.concat(+1);
     case DECREMENT:
-      return state - 1;
+      return state.concat(-1);
     case RESET:
-      return state - 1;
+      return [];
     default:
       return state;
   }
