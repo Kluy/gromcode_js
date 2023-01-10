@@ -1,7 +1,7 @@
 import { ADD_USER, DELETE_USER } from "./users.actions";
 
 const initialState = {
-  userLists: []
+  usersList: []
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -9,12 +9,12 @@ export const userReducer = (state = initialState, action) => {
     case ADD_USER:
       return {
         ...state,
-        userLists: state.userLists.concat({id: 76, name: 'Tom'})
+        userLists: state.usersList.concat({id: 76, name: 'Tom'})
       };
     case DELETE_USER:
       return {
         ...state,
-        userLists: state.userLists.filter(elem => elem.id !== action.id)
+        userLists: state.usersList.filter(elem => elem.id !== action.id)
       };
     default:
       return state;
