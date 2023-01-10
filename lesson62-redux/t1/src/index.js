@@ -17,6 +17,8 @@ const handleDeleteUser = () =>{
 addUserBtn.addEventListener('click', handleAddUser);
 deleteUserBtn.addEventListener('click', handleDeleteUser);
 
+ console.log(store.getState())
+
 store.dispatch(addUser({id: 76, name: 'Tom'}));
 store.dispatch(deleteUser(76));
 store.subscribe(() => console.log(store.getState()));
