@@ -25,7 +25,7 @@ export const reset = () => {
 const counterReducer = (state = [], action) => {
   switch (action.type) {
     case INCREMENT:
-      return state.concat(+1);
+      return state.concat('+1');
     case DECREMENT:
       return state.concat(-1);
     case RESET:

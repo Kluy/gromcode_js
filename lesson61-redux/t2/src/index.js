@@ -23,4 +23,4 @@ decrementBtn.addEventListener('click', handleDecrement);
 incrementBtn.addEventListener('click', handleIncrement);
 resetBtn.addEventListener('click', handleReset);
 
-store.subscribe(() => resultElem.textContent = store.getState().length === 0 ? '' : `${store.getState().join('')} = ${store.getState().reduce((acc,elem) => acc + elem, 0)}`);
+store.subscribe(() => resultElem.textContent = store.getState().length === 0 ? '' : `${store.getState().join('')} = ${store.getState().reduce((acc,elem) => acc + Number(elem), 0)}`);
