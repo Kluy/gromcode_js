@@ -1,14 +1,14 @@
-import { ADD_USER, DELETE_USER } from "./users.reducer";
+// import { ADD_USER, DELETE_USER } from "./users.reducer";
 
 export const addUser = () => {
   return {
-    type: ADD_USER,
+    type: 'ADD_USER',
   };
 };
 
 export const deleteUser = (id) => {
   return {
-    type: DELETE_USER,
+    type: 'DELETE_USER',
     id,
   };
 };
