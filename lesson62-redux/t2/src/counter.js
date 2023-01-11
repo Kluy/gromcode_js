@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
-const INCREMENT = 'COUNTER/INCREMENT';
-const DECREMENT = 'COUNTER/DECREMENT';
+const INCREMENT = 'COUNTERINCREMENT';
+const DECREMENT = 'COUNTERDECREMENT';
 
 export const increment = () => {
   return {
