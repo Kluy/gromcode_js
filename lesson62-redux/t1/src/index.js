@@ -1,24 +1,14 @@
 import store from "./store.js";
-import { addUser, deleteUser } from "./users.actions.js";
+import { addUser, deleteUser, updateUser } from "./users.actions.js";
+import { increment, decrement, reset } from "./counter.actions.js";
 
-import './index.scss';
-
-const addUserBtn = document.querySelector('[data-action="increment"]');
-const deleteUserBtn = document.querySelector('[data-action="decrement"]');
-
-const handleAddUser = () =>{
-    store.dispatch(addUser({id: 76, name: 'Tom'}))
-}
-
-const handleDeleteUser = () =>{
-    store.dispatch(deleteUser(76))
-}
-
-addUserBtn.addEventListener('click', handleAddUser);
-deleteUserBtn.addEventListener('click', handleDeleteUser);
-
- console.log(store.getState())
+store.subscribe(() => console.log(store.getState()));
 
 store.dispatch(addUser({id: 76, name: 'Tom'}));
 store.dispatch(deleteUser(76));
-store.subscribe(() => console.log(store.getState()));
+store.dispatch(addUser({id: 75, name: 'Tom'}));
+store.dispatch(updateUser(75, {name: 'Tomm', age: 12}));
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(decrement());
+store.dispatch(reset());
