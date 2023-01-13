@@ -1,24 +1,24 @@
 import React from 'react';
 
-const Pagination = (props) => {
-  const pagesTotal = Math.ceil(props.totalItems / props.itemsPerPage);
-  let isPrevPageAvailable = props.currentPage === 1;
-  let isNextPageAvailable = pagesTotal === props.currentPage;
+const Pagination = ({currentPage, totalItems, itemsPerPage, goNext, goPrev}) => {
+  const pagesTotal = Math.ceil(totalItems / itemsPerPage);
+  let isPrevPageAvailable = currentPage === 0;
+  let isNextPageAvailable = pagesTotal === currentPage + 1;
 
   return (
     <div className="pagination">
       <button
         className="btn"
         disabled={isPrevPageAvailable}
-        onClick={props.goPrev}
+        onClick={goPrev}
       >
         {isPrevPageAvailable || '←'}
       </button>
-      <span className="pagination__page">{props.currentPage}</span>
+      <span className="pagination__page">{currentPage + 1}</span>
       <button
         className="btn"
         disabled={isNextPageAvailable}
-        onClick={props.goNext}
+        onClick={goNext}
       >
         {isNextPageAvailable || '→'}
       </button>

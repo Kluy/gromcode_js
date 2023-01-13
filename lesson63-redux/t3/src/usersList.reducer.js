@@ -1,10 +1,7 @@
-import React from 'react';
-import {Provider} from 'react-redux';
-import UsersList from "./UsersList"
-import store from './store';
-
-const users = [
-  {
+const initialState = {
+  users: {
+   usersList: [
+       {
     id: 'id-0',
     age: 21,
     name: 'Bob',
@@ -59,14 +56,15 @@ const users = [
     age: 45,
     name: 'Anna',
   },
-];
-
-const App = () => {
-    return (
-        <Provider store={store}>
-            <UsersList users={users}/>
-        </Provider>
-    )
+    ],
+  }
 }
 
-export default App;
+const usersListReducer = (state = initialState, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
+export default usersListReducer;
