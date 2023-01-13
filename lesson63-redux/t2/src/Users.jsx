@@ -9,7 +9,7 @@ const Users = ({usersList, addUser, deleteUser}) => {
         const id = Math.round(Math.random() * 1000000);
       addUser({
         id,
-        name: 'User #' + id,
+        name: 'User # ' + id,
       })
     }
 
