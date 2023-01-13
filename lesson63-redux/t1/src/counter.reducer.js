@@ -1,5 +1,4 @@
-import { RESET } from "../../../lesson62-redux/t1/src/counter.actions";
-import { DECREMENT, INCREMENT } from "./counter.actions";
+import { DECREMENT, INCREMENT, RESET } from "./counter.actions";
 
 export const counterReducer = (state = 0, action) => {
     switch (action.type){
