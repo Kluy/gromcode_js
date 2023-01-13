@@ -3,15 +3,25 @@ import {connect} from 'react-redux';
 import * as usersActions from './users.actions';
 
 const Users = ({usersList, addUser, deleteUser}) => {
+
+    
+    const createUser = () => {
+        const id = Math.round(Math.random() * 1000000);
+      addUser({
+        id,
+        name: 'User #' + id,
+      })
+    }
+
   return (
     <div className="users">
-      <button onClick={addUser} className="users__create-btn">Create user</button>
+      <button onClick={createUser} className="users__create-btn">Create user</button>
       <ul className="users__list">
         {usersList.map(elem => {
           return (
-            <li className="users__list-item">
-              <span>User # {elem.id}</span>
-              <button onClick={deleteUser} className="users__delete-btn">+</button>
+            <li key={elem.id} className="users__list-item">
+              <span>{elem.name}</span>
+              <button onClick={() => deleteUser(elem.id)} className="users__delete-btn">+</button>
             </li>
           )
         })}
