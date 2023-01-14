@@ -33,9 +33,11 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = {
-  goNext: paginationActions.nextPage,
-  goPrev: paginationActions.prevPage,
+const mapDispatch = dispatch => {
+  return {
+    goNext: () => dispatch(paginationActions.nextPage()),
+    goPrev: () => dispatch(paginationActions.prevPage()),
+  }
 }
 
 const connector = connect(mapState, mapDispatch);
