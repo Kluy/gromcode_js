@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as paginationActions from './pagination.actions'
 import Pagination from './Pagination';
 import User from './User';
-
+import { nextPage, prevPage } from './pagination.actions';
 
 const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
   return (
@@ -33,9 +32,11 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = {
-  goNext: paginationActions.nextPage,
-  goPrev: paginationActions.prevPage,
+const mapDispatch = dispatch => {
+  return {
+    goNext: () => dispatch(nextPage()),
+    goPrev: () => dispatch(prevPage()),
+  }
 }
 
 const connector = connect(mapState, mapDispatch);
