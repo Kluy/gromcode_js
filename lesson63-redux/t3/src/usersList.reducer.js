@@ -55,6 +55,16 @@ const initialState = {
     age: 45,
     name: 'Anna',
   },
+   {
+    id: 'id-12',
+    age: 45,
+    name: 'Anna',
+  },
+   {
+    id: 'id-13',
+    age: 45,
+    name: 'Anna',
+  },
     ],
 }
 
