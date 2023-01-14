@@ -27,9 +27,8 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
   }
 
 const mapState = state => {
-  console.log(state);
   return {
-    usersList: state.users.users.usersList,
+    usersList: state.users.usersList,
     currentPage: state.currentPage,
   }
 }

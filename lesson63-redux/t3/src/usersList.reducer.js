@@ -1,5 +1,4 @@
 const initialState = {
-  users: {
    usersList: [
        {
     id: 'id-0',
@@ -56,9 +55,7 @@ const initialState = {
     age: 45,
     name: 'Anna',
   },
-
     ],
-  }
 }
 
 const usersListReducer = (state = initialState, action) => {
