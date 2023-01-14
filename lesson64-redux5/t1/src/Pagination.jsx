@@ -5,6 +5,9 @@ const Pagination = ({currentPage, totalItems, itemsPerPage, goNext, goPrev}) => 
   const isPrevPageAvailable = currentPage === 0;
   const isNextPageAvailable = totalPages !== currentPage + 1;
 
+  // console.log(isPrevPageAvailable);
+  console.log('isNextPageAvailable ' + isNextPageAvailable);
+
   return (
     <div className="pagination">
       <button
