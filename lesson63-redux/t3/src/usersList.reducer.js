@@ -56,6 +56,7 @@ const initialState = {
     age: 45,
     name: 'Anna',
   },
+
     ],
   }
 }
