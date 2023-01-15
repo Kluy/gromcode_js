@@ -1,9 +1,28 @@
 import React from 'react';
-import Options from './options/Options';
+import { connect } from 'react-redux';
+import AvailableOptions from './options/AvailableOptions';
+import { moveOption } from './options/options.actions';
+import SelectedOptions from './options/SelectedOptions';
 
-const TransferList = () => {
+const TransferList = ({optionsList}) => {
     return (
-        <Options/>
+        <>
+            <AvailableOptions title='Available Options' options={optionsList}  />
+            <SelectedOptions title='Selected Options'  options={optionsList} />
+        </>
+
     );
 }
-export default TransferList;
+
+const mapState = (state) => {
+    return {
+        optionsList: state.options.optionsList,
+        selectedOptions: state.options.selectedOptions,
+    }
+}
+
+const mapDispatch = {
+    moveOption: moveOption,
+}
+
+export default connect(mapState, mapDispatch)(TransferList);
