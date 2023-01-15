@@ -18,7 +18,6 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
         />
         <ul className="users">
           {usersList
-            .sort((a, b) => a.name > b.name ? 1 : -1)
             .slice(currentPage * 3, (currentPage * 3) + 3)
             .map((user) => (
               <User key={user.id} {...user} />
