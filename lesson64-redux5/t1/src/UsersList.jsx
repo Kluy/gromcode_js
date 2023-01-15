@@ -29,6 +29,7 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
   }
 
 const mapState = state => {
+  console.log(state);
   return {
     usersList: usersListSelector(state),
     currentPage: currentPageSelector(state),
@@ -40,7 +41,6 @@ const mapState = state => {
 const mapDispatch = {
     goNext: paginationActions.nextPage,
     goPrev: paginationActions.prevPage,
-  
 }
 
 const connector = connect(mapState, mapDispatch);

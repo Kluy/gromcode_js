@@ -88,7 +88,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         users: {
           ...state.users,
-          currentPage: state.users.currentPage + 1,
+          currentPage: state.users.currentPage - 1,
         } 
       }
     default:
