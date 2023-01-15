@@ -33,12 +33,9 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
   }
 
 const mapState = state => {
-  console.log(state);
   return {
     usersList: usersListSelector(state),
     currentPage: currentPageSelector(state),
-    // usersList: state.users.usersList,
-    // currentPage: state.users.currentPage,
   }
 }
 
