@@ -5,8 +5,12 @@ import Pagination from './Pagination';
 import User from './User';
 import { currentPageSelector, usersListSelector } from './users.selectors';
 
+const itemsPerPage = 3;
 
 const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
+
+  const firstUser = currentPage * itemsPerPage;
+
   return (
       <div>
         <Pagination
@@ -14,12 +18,12 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
           goNext={goNext}
           currentPage={currentPage}
           totalItems={usersList.length}
-          itemsPerPage={3}
+          itemsPerPage={itemsPerPage}
         />
         <ul className="users">
           {usersList
             .sort((a, b) => a.name > b.name ? 1 : -1)
-            .slice(currentPage * 3, (currentPage * 3) + 3)
+            .slice(firstUser, firstUser + 3)
             .map((user) => (
               <User key={user.id} {...user} />
             ))}
