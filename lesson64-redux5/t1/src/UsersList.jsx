@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as paginationActions from './pagination.actions'
+import * as paginationActions from './users.actions'
 import Pagination from './Pagination';
 import User from './User';
 import { currentPageSelector, usersListSelector } from './users.selectors';
@@ -32,6 +32,8 @@ const mapState = state => {
   return {
     usersList: usersListSelector(state),
     currentPage: currentPageSelector(state),
+    // usersList: state.users.usersList,
+    // currentPage: state.users.currentPage,
   }
 }
 

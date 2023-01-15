@@ -1,7 +1,9 @@
+import { NEXT_PAGE, PREV_PAGE } from "./users.actions";
 const initialState = {
-   usersList: [
-    {
-      id: 'id-0',
+  users:{
+    usersList: [
+      {
+        id: 'id-0',
       age: 21,
       name: 'Bob',
     },
@@ -66,13 +68,33 @@ const initialState = {
       name: 'Anna',
     },
   ],
+  currentPage: 0,
+}
 }
 
-const usersListReducer = (state = initialState, action) => {
+
+const usersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case NEXT_PAGE:
+      return {
+        ...state,
+        users: {
+          ...state.users,
+          currentPage: state.users.currentPage + 1,
+        } 
+      }
+    case PREV_PAGE:
+       return {
+        ...state,
+        users: {
+          ...state.users,
+          currentPage: state.users.currentPage + 1,
+        } 
+      }
     default:
       return state;
   }
 }
 
-export default usersListReducer;
+
+export default usersReducer;
