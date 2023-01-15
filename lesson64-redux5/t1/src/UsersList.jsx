@@ -10,6 +10,7 @@ const itemsPerPage = 3;
 const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
 
   const firstUser = currentPage * itemsPerPage;
+  const usersToDisplay = usersList.slice(firstUser, firstUser + 3);
 
   return (
       <div>
@@ -21,9 +22,7 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
           itemsPerPage={itemsPerPage}
         />
         <ul className="users">
-          {usersList
-            .sort((a, b) => a.name > b.name ? 1 : -1)
-            .slice(firstUser, firstUser + 3)
+          {usersToDisplay
             .map((user) => (
               <User key={user.id} {...user} />
             ))}
