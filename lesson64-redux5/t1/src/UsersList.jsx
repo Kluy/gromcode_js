@@ -18,6 +18,7 @@ const UsersList = ({usersList, currentPage, goNext, goPrev}) => {
         />
         <ul className="users">
           {usersList
+            .sort((a, b) => a.name > b.name ? 1 : -1)
             .slice(currentPage * 3, (currentPage * 3) + 3)
             .map((user) => (
               <User key={user.id} {...user} />
@@ -34,11 +35,10 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    goNext: () => dispatch(paginationActions.nextPage()),
-    goPrev: () => dispatch(paginationActions.prevPage()),
-  }
+const mapDispatch = {
+    goNext: paginationActions.nextPage,
+    goPrev: paginationActions.prevPage,
+  
 }
 
 const connector = connect(mapState, mapDispatch);

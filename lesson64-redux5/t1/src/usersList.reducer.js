@@ -6,11 +6,6 @@ const initialState = {
       name: 'Bob',
     },
     {
-      id: 'id-14',
-      age: 22,
-      name: 'Bob',
-    },
-    {
       id: 'id-1',
       age: 17,
       name: 'Tom',
