@@ -24,10 +24,8 @@ const TransferList = ({ availableOptionsList, selectedOptionsList, moveOption })
 
 const mapState = (state) => {
   return {
-    // optionsList: optionsList(state),
     availableOptionsList: availableOptions(state),
     selectedOptionsList: selectedOptions(state),
-    // selectedOptions: selectedList(state),
   };
 };
 
