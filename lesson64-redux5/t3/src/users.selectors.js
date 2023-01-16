@@ -8,12 +8,12 @@ export const filterTextSelector = (state) => {
   return state.filterText;
 };
 
-// export const availableOptions = createSelector(
-//   [optionsListSelector, idsSelector],
-//   (options, ids) => {
-//      return options.filter(option => !ids.includes(option.id)); 
-//   }
-// )
+export const availableOptions = createSelector(
+  [usersListSelector, filterTextSelector],
+  (users, filterText) => {
+     return users.filter(user => user.name.include(filterText)); 
+  }
+)
 
 // export const selectedOptions = createSelector(
 //   [optionsListSelector, idsSelector],

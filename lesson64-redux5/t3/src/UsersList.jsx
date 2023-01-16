@@ -7,7 +7,7 @@ import { filterTextSelector, usersListSelector } from "./users.selectors";
 export const UsersList = ({usersList, filterText}) => {
     return (
         <div>
-            <Filter filterText={filterText} />
+            <Filter filterText={filterText} count={usersList.length} />
             <ul className="users">
                 {usersList.map(user =>
                  <User key={user.id} {...user} />
