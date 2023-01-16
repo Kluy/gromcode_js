@@ -8,16 +8,9 @@ export const filterTextSelector = (state) => {
   return state.filterText;
 };
 
-export const availableOptions = createSelector(
+export const usersListFiltered = createSelector(
   [usersListSelector, filterTextSelector],
   (users, filterText) => {
-     return users.filter(user => user.name.include(filterText)); 
+     return users.filter(({name}) => name.toLowerCase().includes(filterText.toLowerCase())); 
   }
 )
-
-// export const selectedOptions = createSelector(
-//   [optionsListSelector, idsSelector],
-//   (options, ids) => {
-//      return options.filter(option => ids.includes(option.id)); 
-//   }
-// )
