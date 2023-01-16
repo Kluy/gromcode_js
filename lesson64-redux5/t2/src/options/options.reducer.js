@@ -1,7 +1,6 @@
 import { TOGGLE } from './options.actions';
 
 const initialState = {
-  options: {
     optionsList: [
       {
         id: 'id-0',
@@ -33,22 +32,18 @@ const initialState = {
       },
     ],
     selected: [],
-  },
-};
+  }
 
 export const optionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE: {
 
-      const selectedOptions = state.options.selected;
+      const selectedOptions = state.selected;
       const optionId = action.payload.id;
 
       return {
         ...state,
-        options: {
-          ...state.options,
-          selected: selectedOptions.includes(optionId) ? selectedOptions.filter(id => id !== optionId) : selectedOptions.concat(optionId),
-        },
+        selected: selectedOptions.includes(optionId) ? selectedOptions.filter(id => id !== optionId) : selectedOptions.concat(optionId),
       };
     }
     default:
