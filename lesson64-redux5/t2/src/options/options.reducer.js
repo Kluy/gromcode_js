@@ -37,14 +37,17 @@ const initialState = {
 };
 
 export const optionsReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case TOGGLE: {
+
+      const selectedOptions = state.options.selected;
+      const optionId = action.payload.id;
+
       return {
         ...state,
         options: {
           ...state.options,
-          selected: state.options.selected.concat(action.payload.id),
+          selected: selectedOptions.includes(optionId) ? selectedOptions.filter(id => id !== optionId) : selectedOptions.concat(optionId),
         },
       };
     }

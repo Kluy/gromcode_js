@@ -2,20 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AvailableOptions from './options/AvailableOptions';
 import { toggleOption } from './options/options.actions';
-import { optionsList, selectedList } from './options/options.selectors';
+import { availableOptions, selectedOptions } from './options/options.selectors';
 import SelectedOptions from './options/SelectedOptions';
 
-const TransferList = ({ optionsList, moveOption }) => {
+const TransferList = ({ availableOptionsList, selectedOptionsList, moveOption }) => {
   return (
     <>
       <AvailableOptions
         title="Available Options"
-        options={optionsList}
+        options={availableOptionsList}
         moveOption={moveOption}
       />
       <SelectedOptions
         title="Selected Options"
-        options={optionsList}
+        options={selectedOptionsList}
         moveOption={moveOption}
       />
     </>
@@ -24,8 +24,10 @@ const TransferList = ({ optionsList, moveOption }) => {
 
 const mapState = (state) => {
   return {
-    optionsList: optionsList,
-    selectedOptions: selectedList,
+    // optionsList: optionsList(state),
+    availableOptionsList: availableOptions(state),
+    selectedOptionsList: selectedOptions(state),
+    // selectedOptions: selectedList(state),
   };
 };
 
