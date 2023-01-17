@@ -2,18 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as counterActions from './counter.actions';
 
-const Counter = ({counter}) => {
-    retrun (
+const Counter = ({counter, increment, decrement, reset}) => {
+    return (
         <div className="counter">
-            <button className="counter__button">-</button>
-            <span className="counter__value">{counter}</span>
-            <button className="counter__button">+</button>
+            <button onClick={decrement} className="counter__button">-</button>
+            <span onClick={reset} className="counter__value">{counter}</span>
+            <button onClick={increment} className="counter__button">+</button>
         </div>
     )
 }
 
-const mapState = (state) = {
-    counter: state,
+const mapState = (state) => {
+    return {
+        counter: state,
+    }
 }
 
 const mapDispatch = {
