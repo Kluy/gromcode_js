@@ -5,12 +5,13 @@ import * as userActions from './user.actions';
 import { isFetchingSelector, userDataSelector } from "./user.selectors";
 
 const UserInfo = ({isFetching, userData}) => {
-    if(isFetching){
-        return <Spinner/>
-    }
     
     if(!userData)
         return null;
+
+    if(isFetching){
+        return <Spinner/>
+    }
 
     return (
         <div className="user">
