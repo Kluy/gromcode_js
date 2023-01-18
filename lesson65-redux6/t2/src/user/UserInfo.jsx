@@ -5,6 +5,7 @@ import * as userActions from './user.actions';
 import { isFetchingSelector, userDataSelector } from "./user.selectors";
 
 const UserInfo = ({isFetching, userData}) => {
+    
     if(!userData)
         return null;
 
@@ -21,7 +22,7 @@ const UserInfo = ({isFetching, userData}) => {
             />
             <div className="user__info">
               <span className="user__name">{userData.name}</span>
-              <span className="user__location">{userData.loсation}</span>
+              <span className="user__location">{userData.location}</span>
             </div>
         </div>
     )
