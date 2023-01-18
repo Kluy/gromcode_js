@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as userActions from './user.actions';
-import { fetchUser } from "./user.gateway";
 
-const SearchField = ({showSpinner, saveUser}) => {
+const SearchField = ({showSpinner, fetchUser}) => {
 
     const [userName, setUserName] = useState('');
 
@@ -13,7 +12,7 @@ const SearchField = ({showSpinner, saveUser}) => {
 
     const fetchUserData = () => {
         showSpinner();
-        fetchUser(userName).then(result => saveUser(result));
+        fetchUser(userName);
     }
 
     return (
@@ -26,7 +25,7 @@ const SearchField = ({showSpinner, saveUser}) => {
 
 const mapDispatch = {
     showSpinner: userActions.showSpinnerAction,
-    saveUser: userActions.saveUser,
+    fetchUser: userActions.fetchUserData,
 }
 
 export default connect(null, mapDispatch) (SearchField);

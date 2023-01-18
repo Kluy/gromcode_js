@@ -1,7 +1,9 @@
+import { getUserData } from "./user.gateway";
+
 export const SAVE_USER = 'USER/SAVE_USER';
 export const SHOW_SPINNER = 'USER/SHOW_SPINNER';
 
-export const saveUser = (userData) => {
+export const saveUserAction = (userData) => {
     return {
         type: SAVE_USER,
         payload: {
@@ -16,3 +18,8 @@ export const showSpinnerAction = () => {
     }
 }
 
+export const fetchUserData = (userName) => {
+    return function (dispatch) {
+        getUserData(userName).then(result => dispatch(saveUserAction(result)));
+    }
+}
