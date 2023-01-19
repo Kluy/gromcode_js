@@ -9,7 +9,7 @@ const weatherReducer = (state = initialState, action) => {
     case SAVE_DATA: {
       return {
         ...state,
-        weather: action.payload.data,
+        weather: action.payload.weather,
       };
     }
     default:

@@ -11,8 +11,10 @@ export const saveData = (weather) => {
   };
 };
 
-export const getWeatherData = (weatherData) => {
+export const getWeatherData = () => {
   return function (dispatch) {
-    getData(weatherData).then((result) => dispatch(saveData(result)));
+    getData().then((result) => {
+      return dispatch(saveData(result));
+    });
   };
 };

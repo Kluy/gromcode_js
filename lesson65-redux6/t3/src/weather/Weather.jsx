@@ -3,7 +3,9 @@ import { getWeatherData } from './weather.actions';
 import { weatherSelector } from './weather.selectors';
 import { connect } from 'react-redux';
 
-const Weather = ({ weather }) => {
+const Weather = ({ weather, getWeather }) => {
+  document.addEventListener('DOMContentLoaded', () => getWeather());
+
   return (
     <main className="weather">
       <h1 className="weather__title">Weather data</h1>
