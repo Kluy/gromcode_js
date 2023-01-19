@@ -1,9 +1,17 @@
 import { SAVE_DATA } from './weather.actions';
 
-const weatherReducer = (state = [], action) => {
+const initialState = {
+  weather: [],
+};
+
+const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SAVE_DATA:
-      return action.payload.weather;
+    case SAVE_DATA: {
+      return {
+        ...state,
+        weather: action.payload.weather,
+      };
+    }
     default:
       return state;
   }
