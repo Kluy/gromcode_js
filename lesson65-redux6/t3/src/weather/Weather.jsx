@@ -1,16 +1,19 @@
 import React from 'react';
 import { getWeatherData } from './weather.actions';
 import { weatherSelector } from './weather.selectors';
+import { connect } from 'react-redux';
 
-const Weather = () => {
+const Weather = ({ weather }) => {
   return (
     <main className="weather">
       <h1 className="weather__title">Weather data</h1>
       <ul className="cities-list">
-        <li className="city">
-          <span className="city__name">Lake Hilmaside</span>
-          <span className="city__temperature">78 F</span>
-        </li>
+        {weather.map((elem) => (
+          <li key={elem.id} className="city">
+            <span className="city__name">{elem.name}</span>
+            <span className="city__temperature">{elem.temperature}</span>
+          </li>
+        ))}
       </ul>
     </main>
   );
