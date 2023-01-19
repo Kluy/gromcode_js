@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 
-
 const Clock = (props) => {
 
   const newTime = () => moment(new Date()).add(props.offset,'hours').format('h:mm:ss a');
