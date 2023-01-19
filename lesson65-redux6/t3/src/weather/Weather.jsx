@@ -2,9 +2,10 @@ import React from 'react';
 import { getWeatherData } from './weather.actions';
 import { weatherSelector } from './weather.selectors';
 import { connect } from 'react-redux';
+import { useEffect } from 'react';
 
 const Weather = ({ weather, getWeather }) => {
-  document.addEventListener('DOMContentLoaded', () => getWeather());
+  useEffect(() => getWeather(), []);
 
   return (
     <main className="weather">
