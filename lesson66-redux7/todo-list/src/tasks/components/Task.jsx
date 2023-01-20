@@ -2,31 +2,29 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class Task extends PureComponent {
-  render() {
+const Task = ({onChange, onDelete, id, text, done }) => {
     const listItemClasses = classNames('list-item', {
-      'list-item_done': this.props.done,
+      'list-item_done': done,
     });
     return (
       <li
-        onClick={() => this.props.onChange(this.props.id)}
+        onClick={() => onChange(id)}
         className={listItemClasses}
       >
         <input
           type="checkbox"
-          checked={this.props.done}
+          checked={done}
           className="list-item__checkbox"
-          onChange={() => this.props.onChange(this.props.id)}
+          onChange={() => onChange(id)}
         />
-        <span className="list-item__text">{this.props.text}</span>
+        <span className="list-item__text">{text}</span>
         <button
-          onClick={() => this.props.onDelete(this.props.id)}
+          onClick={() => onDelete(id)}
           className="list-item__delete-btn"
         ></button>
       </li>
     );
   }
-}
 
 Task.propTypes = {
   done: PropTypes.bool,

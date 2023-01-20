@@ -9,29 +9,11 @@ import { useEffect } from 'react';
 
 
 
-const TasksList = ({tasksList, getTasks}) => {
+const TasksList = ({tasksList, getTasks, updateTask, deleteTask}) => {
 
   useEffect(() => {
     getTasks();
   }, []);
-  // state = {
-  //   tasks: [],
-  // };
-
-  // componentDidMount() {
-  //   this.renderTasks();
-  // }
-
-  // renderTasks = () => {
-  //   fetchTasks().then((result) => this.setState({ tasks: result }));
-  // };
-
-  // handleTaskUpdate = (taskId) => {
-  //   const { done, text } = this.state.tasks.find((elem) => elem.id === taskId);
-  //   const updatedTask = { text, done: !done };
-
-  //   updateTask(taskId, updatedTask).then((result) => this.renderTasks());
-  // };
 
   // handleTaskCreate = () => {
   //   const newTask = { text: this.state.input, done: false };
@@ -59,8 +41,8 @@ const TasksList = ({tasksList, getTasks}) => {
         <ul className="list">
           {sortedTasks.map((elem) => (
             <Task
-              // onChange={this.handleTaskUpdate}
-              // onDelete={this.handleTaskDelete}
+              onChange={updateTask}
+              onDelete={deleteTask}
               key={elem.id}
               {...elem}
             />
@@ -78,6 +60,8 @@ const mapState = (state) => {
 
 const mapDispatch = {
   getTasks: tasksActions.getTasksAction,
+  updateTask: tasksActions.updateTaskAction,
+  deleteTask: tasksActions.deleteTaskAction,
 }
 
 export default connect(mapState, mapDispatch)(TasksList);
