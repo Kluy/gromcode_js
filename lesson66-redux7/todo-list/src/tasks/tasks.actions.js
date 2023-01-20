@@ -1,4 +1,4 @@
-import { deleteTask, fetchTasks, updateTask } from "./tasks.gateway";
+import { createTask, deleteTask, fetchTasks, updateTask } from "./tasks.gateway";
 import { tasksSelector } from "./tasks.selectors";
 
 export const GET_TASK = 'TASKS/GET_TASKS';
@@ -30,8 +30,14 @@ export const updateTaskAction = (taskId) => {
 }
 
 export const deleteTaskAction = (taskId) => {
-    return function (dispatch, getState) {
+    return function (dispatch) {
+        deleteTask(taskId).then(() => dispatch(getTasksAction()));
+    }
+}
 
-        deleteTask(taskId).then(result => dispatch(getTasksAction()));
+export const createTaskAction = (text) => {
+    return function (dispatch) {
+         const newTask = { text, done: false };
+         createTask(newTask).then(() => dispatch(getTasksAction()));
     }
 }

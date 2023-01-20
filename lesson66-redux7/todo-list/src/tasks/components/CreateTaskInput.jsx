@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-const CreateTaskInput = (props) => {
+const CreateTaskInput = ({onCreate}) => {
+
+  const[input, setInput] = useState('');
+
   return (
     <div className="create-task">
       <input
-        // onChange={props.onChange}
+        onChange={(e) => setInput(e.target.value)}
         className="create-task__input"
         type="text"
-        // value={props.input}
+        value={input}
       />
       <button
-      //  onClick={props.onCreate}
-       className="btn create-task__btn">
+        onClick={() => onCreate(input)}
+        className="btn create-task__btn">
         Create
       </button>
     </div>

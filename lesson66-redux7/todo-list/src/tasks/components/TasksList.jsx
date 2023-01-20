@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 
 
-const TasksList = ({tasksList, getTasks, updateTask, deleteTask}) => {
+const TasksList = ({tasksList, getTasks, updateTask, deleteTask, createTask}) => {
 
   useEffect(() => {
     getTasks();
@@ -21,9 +21,6 @@ const TasksList = ({tasksList, getTasks, updateTask, deleteTask}) => {
   //   createTask(newTask).then((result) => this.renderTasks());
   // };
 
-  // handleTaskDelete = (taskId) => {
-  //   deleteTask(taskId).then((result) => this.renderTasks());
-  // };
 
   // handleInputChange = (e) => {
   //   this.setState({ input: e.target.value });
@@ -35,7 +32,7 @@ const TasksList = ({tasksList, getTasks, updateTask, deleteTask}) => {
       <main className="todo-list">
         <CreateTaskInput
           // input={this.state.input}
-          // onCreate={this.handleTaskCreate}
+          onCreate={createTask}
           // onChange={this.handleInputChange}
         />
         <ul className="list">
@@ -62,6 +59,7 @@ const mapDispatch = {
   getTasks: tasksActions.getTasksAction,
   updateTask: tasksActions.updateTaskAction,
   deleteTask: tasksActions.deleteTaskAction,
+  createTask: tasksActions.createTaskAction,
 }
 
 export default connect(mapState, mapDispatch)(TasksList);
