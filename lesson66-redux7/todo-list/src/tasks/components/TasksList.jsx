@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CreateTaskInput from './CreateTaskInput';
 import Task from './Task';
-import { createTask, deleteTask, fetchTasks, updateTask } from '../tasks.gateway';
-import { tasksSelector } from '../tasks.selectors';
+import { sortedTasksSelector } from '../tasks.selectors';
 import * as tasksActions from '../tasks.actions';
 import {connect} from 'react-redux';
 import { useEffect } from 'react';
@@ -15,25 +14,12 @@ const TasksList = ({tasksList, getTasks, updateTask, deleteTask, createTask}) =>
     getTasks();
   }, []);
 
-  // handleTaskCreate = () => {
-  //   const newTask = { text: this.state.input, done: false };
-  //   this.setState({ input: '' });
-  //   createTask(newTask).then((result) => this.renderTasks());
-  // };
-
-
-  // handleInputChange = (e) => {
-  //   this.setState({ input: e.target.value });
-  // };
-
     const sortedTasks = tasksList.sort((a, b) => a.done - b.done);
 
     return (
       <main className="todo-list">
         <CreateTaskInput
-          // input={this.state.input}
           onCreate={createTask}
-          // onChange={this.handleInputChange}
         />
         <ul className="list">
           {sortedTasks.map((elem) => (
@@ -51,7 +37,7 @@ const TasksList = ({tasksList, getTasks, updateTask, deleteTask, createTask}) =>
 
 const mapState = (state) => {
   return {
-    tasksList: tasksSelector(state),
+    tasksList: sortedTasksSelector(state),
   }
 }
 

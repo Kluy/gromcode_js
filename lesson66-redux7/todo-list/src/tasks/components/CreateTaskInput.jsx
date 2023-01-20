@@ -23,14 +23,8 @@ const CreateTaskInput = ({onCreate}) => {
   );
 };
 
-// CreateTaskInput.propTypes = {
-//   input: PropTypes.string,
-//   onChange: PropTypes.func.isRequired,
-//   onCreate: PropTypes.func.isRequired,
-// };
-
-// CreateTaskInput.defaultProps = {
-//   input: '',
-// };
+CreateTaskInput.propTypes = {
+  onCreate: PropTypes.func.isRequired,
+};
 
 export default CreateTaskInput;
