@@ -28,7 +28,7 @@ export const deleteTask = (taskId) =>
     if (!response.ok) throw new Error('Task didn"t deleted');
   });
 
-export const fetchData = () =>
+export const fetchTasks = () =>
   fetch(`${baseUrl}`)
     .then((response) => {
       if (response.ok) return response.json();

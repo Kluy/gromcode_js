@@ -1,10 +1,13 @@
 import React from 'react';
-import CreateTaskInput from './CreateTaskInput';
-import ToDoList from './ToDoList';
+import store from './store';
+import ToDoList from './tasks/components/ToDoList';
+import {Provider} from 'react-redux';
 
 const App = () => {
   return (
+    <Provider store={store}>
      <ToDoList />
+    </Provider>
   );
 }
 

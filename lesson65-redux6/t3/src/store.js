@@ -10,11 +10,11 @@ const logger = (state) => (next) => (action) => {
   console.groupEnd();
 };
 
-const composeEnhanters = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   weatherReducer,
-  composeEnhanters(applyMiddleware(thunk, logger))
+  composeEnhancers(applyMiddleware(thunk, logger))
 );
 
 export default store;
